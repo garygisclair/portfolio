@@ -1,11 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Web Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gary Gisclair — Information and Systems Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <p></p>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="logo" aria-label="Gary Gisclair home">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <div class="nav__links">
+        <a href="#" class="nav__link nav__link--active">Home</a>
+        <a href="#portfolio" class="nav__link">Portfolio</a>
+        <a href="#experience" class="nav__link">Experience</a>
+        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm">
+          LinkedIn
+          <svg class="btn__icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.75 14.25L14.25 3.75M14.25 3.75H8.25M14.25 3.75V9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ================================================
+         HERO
+         ================================================ -->
+    <section class="section hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero__inner">
+
+          <div class="hero__content">
+            <div class="section-label" aria-hidden="true">
+              <span class="section-label__line"></span>
+            </div>
+            <div class="hero__text">
+              <h1 class="hero__name">Gary Gisclair</h1>
+              <p class="hero__title">Information and Systems Designer</p>
+            </div>
+            <p class="hero__bio">I take a strategic approach to solving complex design and UI challenges, delivering intuitive product experiences that drive user engagement, improve usability, and streamline development.</p>
+            <div class="hero__ctas">
+              <a href="#portfolio" class="btn btn--solid btn--lg">Examples</a>
+              <a href="#experience" class="btn btn--outline btn--lg">Experience</a>
+            </div>
+          </div>
+
+          <div class="hero__card">
+            <img
+              src="images/hero-dashboard.png"
+              alt="Data visualization and analytics dashboard"
+              class="hero__image"
+            >
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         PORTFOLIO
+         ================================================ -->
+    <section class="section" id="portfolio" aria-label="Portfolio">
+      <div class="container">
+
+        <header class="section-header section-header--blue">
+          <div class="section-label">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">Selected Work</span>
+          </div>
+          <h2 class="section-title">Portfolio</h2>
+        </header>
+
+        <!-- Row 1: Two full-bleed screenshot cards -->
+        <div class="portfolio-grid portfolio-grid--2">
+          <article class="card">
+            <div class="card__media card__media--white card__media--top">
+              <img
+                src="images/innersourcing.png"
+                alt="Innersourcing contributor activity dashboard"
+                class="card__img card__img--cover"
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media card__media--white card__media--top">
+              <img
+                src="images/epd-gfs.png"
+                alt="ePD GFS analytics platform"
+                class="card__img card__img--cover"
+              >
+            </div>
+          </article>
+        </div>
+
+        <!-- Row 2: Three logo/brand cards -->
+        <div class="portfolio-grid portfolio-grid--3">
+          <article class="card">
+            <div class="card__media card__media--white card__media--center">
+              <div class="card__logo-stack">
+                <img
+                  src="images/finance-innovation-transformation.png"
+                  alt="Finance Innovation Transformation brand"
+                  class="card__img card__img--logo card__img--logo-main"
+                >
+                <img
+                  src="images/finance-accent.png"
+                  alt=""
+                  aria-hidden="true"
+                  class="card__img card__img--logo card__img--logo-accent"
+                >
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media card__media--mint card__media--center">
+              <img
+                src="images/circular-arrow-logo.png"
+                alt="Circular arrow brand logo"
+                class="card__img card__img--logo"
+              >
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__media card__media--white card__media--center">
+              <img
+                src="images/map-logo.png"
+                alt="Marketplaces Analytics Program — Elevating Analytics"
+                class="card__img card__img--logo"
+              >
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         EXPERIENCE
+         ================================================ -->
+    <section class="section" id="experience" aria-label="Experience">
+      <div class="container">
+
+        <header class="section-header section-header--purple">
+          <div class="section-label">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">Career</span>
+          </div>
+          <h2 class="section-title">Experience</h2>
+        </header>
+
+        <div class="experience-inner">
+
+          <!-- Skills Sidebar -->
+          <aside class="skills" aria-label="Tools and skills">
+            <p class="skills__heading">TOOLS &amp; SKILLS</p>
+            <ul class="skills__list">
+              <li class="skill" style="--bar-color:#4caf50; --bar-w:96.5%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">User Experience Design (UED)</span>
+              </li>
+              <li class="skill" style="--bar-color:#7986cb; --bar-w:97.7%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Logo Design</span>
+              </li>
+              <li class="skill" style="--bar-color:#ffa726; --bar-w:95%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Brand Design</span>
+              </li>
+              <li class="skill" style="--bar-color:#ff7043; --bar-w:84.2%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Visualization Design</span>
+              </li>
+              <li class="skill" style="--bar-color:#b39ddb; --bar-w:80%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Creative Direction</span>
+              </li>
+              <li class="skill" style="--bar-color:#90caf9; --bar-w:80%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Interaction Design</span>
+              </li>
+              <li class="skill" style="--bar-color:#f48fb1; --bar-w:70.8%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Graphic Design</span>
+              </li>
+              <li class="skill" style="--bar-color:#00acc1; --bar-w:68.5%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Illustration</span>
+              </li>
+              <li class="skill" style="--bar-color:#b0bec5; --bar-w:65.8%">
+                <div class="skill__bar" aria-hidden="true"></div>
+                <span class="skill__label">Web Design</span>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Timeline -->
+          <div class="timeline" role="list" aria-label="Work history">
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__marker" aria-hidden="true">
+                <div class="timeline__dot"></div>
+                <div class="timeline__connector"></div>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__date">Mar 2012 – Feb 2026 · 14 yrs</p>
+                <h3 class="timeline__role">Manager, UI &amp; UX Design</h3>
+                <p class="timeline__company">eBay</p>
+                <p class="timeline__desc">I collaborated cross-functionally with teams across Finance, IT, eBay for Charity, and internal AI initiatives at eBay. I specialized in designing end-to-end reporting applications, creating data visualizations for analytical insights, developing intuitive UI intake forms, and leading branding and marketing efforts for multiple internal teams.</p>
+                <ul class="tag-list" aria-label="Skills used">
+                  <li class="tag">User Experience Design</li>
+                  <li class="tag">Design Leadership</li>
+                  <li class="tag">Visualization Design</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__marker" aria-hidden="true">
+                <div class="timeline__dot"></div>
+                <div class="timeline__connector"></div>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__date">Oct 2011 – Mar 2012 · 6 mos</p>
+                <h3 class="timeline__role">Art Director</h3>
+                <p class="timeline__company">Highwood Design</p>
+                <p class="timeline__desc">I worked with a UK-based offshore development firm to deliver web and brand design solutions for a diverse client portfolio. Designed scalable content management system components and developed user-friendly intake forms to streamline customer data collection and improve overall user experience.</p>
+                <ul class="tag-list" aria-label="Skills used">
+                  <li class="tag">Brand Design</li>
+                  <li class="tag">Design Leadership</li>
+                  <li class="tag">User Experience Design</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline__item" role="listitem">
+              <div class="timeline__marker" aria-hidden="true">
+                <div class="timeline__dot"></div>
+                <div class="timeline__connector"></div>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__date">Sep 2010 – Nov 2011 · 1 yr 3 mos</p>
+                <h3 class="timeline__role">Creative Consultant</h3>
+                <p class="timeline__company">Joomlashack</p>
+                <p class="timeline__desc">Designed flexible content management system website templates to ensure ease of use. Developed cohesive brand identities for clients while enhancing overall user experience through thoughtful, user-centered design.</p>
+                <ul class="tag-list" aria-label="Skills used">
+                  <li class="tag">Brand Design</li>
+                  <li class="tag">User Experience Design</li>
+                  <li class="tag">Creative Direction</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline__item timeline__item--edu" role="listitem">
+              <div class="timeline__marker" aria-hidden="true">
+                <div class="timeline__dot timeline__dot--pink"></div>
+              </div>
+              <div class="timeline__body">
+                <p class="timeline__date timeline__date--pink">EDUCATION</p>
+                <h3 class="timeline__role">Bachelor of Arts (B.A.), Graphic Design</h3>
+                <p class="timeline__company">University of Louisiana at Lafayette</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="#" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--text">
+        LinkedIn
+        <svg class="btn__icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3.75 14.25L14.25 3.75M14.25 3.75H8.25M14.25 3.75V9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>

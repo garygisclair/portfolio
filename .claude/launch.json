@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/gary/Documents/GitHub/portfolio/server.js"],
+      "port": 3001
+    }
+  ]
+}
