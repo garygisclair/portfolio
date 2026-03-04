@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Gary Gisclair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="logo" aria-label="Gary Gisclair home">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="portfolio.html" class="nav__link nav__link--active">Portfolio</a>
+        <a href="index.html#experience" class="nav__link">Experience</a>
+        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm">
+          LinkedIn
+          <svg class="btn__icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.75 14.25L14.25 3.75M14.25 3.75H8.25M14.25 3.75V9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Page Header -->
+    <section class="section page-hero" aria-label="Portfolio header">
+      <div class="container">
+        <div class="page-hero__inner">
+          <div class="section-label">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">All Work</span>
+          </div>
+          <h1 class="section-title">Portfolio</h1>
+          <p class="page-hero__tagline">A collection of dashboards, data visualizations, brand identities, and UX design work spanning 15+ years at eBay and beyond.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card Grid -->
+    <section class="section" aria-label="Project library">
+      <div class="container">
+        <div class="portfolio-grid portfolio-grid--3 pcard-grid">
+
+          <article class="pcard" data-id="ai-academy" role="button" tabindex="0" aria-label="View AI Academy project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/ai-academy/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">AI Academy</h2>
+              <p class="pcard__desc">Internal learning platform dashboard tracking AI literacy progress across eBay's global workforce.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="ai-leadership-dashboard" role="button" tabindex="0" aria-label="View AI Leadership Dashboard project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/ai-leadership-dashboard/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">AI Leadership Dashboard</h2>
+              <p class="pcard__desc">Executive-facing analytics dashboard tracking AI adoption, investment, and outcomes across the organization.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="arest" role="button" tabindex="0" aria-label="View aRest project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/arest/page-02.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">App / UX</span>
+              <h2 class="pcard__title">aRest</h2>
+              <p class="pcard__desc">REST API testing tool with a streamlined UI designed for developer productivity and workflow efficiency.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="consumer-insights-dashboard" role="button" tabindex="0" aria-label="View Consumer Insights Dashboard project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/consumer-insights-dashboard/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">Consumer Insights Dashboard</h2>
+              <p class="pcard__desc">Bootstrap-based dashboard surfacing consumer behavior analytics to support product and marketing decisions.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="core-tech-headcount" role="button" tabindex="0" aria-label="View Core Tech Headcount project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/core-tech-headcount/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">Core Tech Headcount</h2>
+              <p class="pcard__desc">Workforce planning and headcount tracking visualization for eBay's Core Technology organization.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="finance-coe-branding" role="button" tabindex="0" aria-label="View Finance COE Branding project">
+            <div class="pcard__media pcard__media--contain" aria-hidden="true"><img src="images/finance-coe-branding/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h2 class="pcard__title">Finance COE Branding</h2>
+              <p class="pcard__desc">Visual identity system and brand guidelines for eBay's Finance Center of Excellence team.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="finance-innovation-transformation" role="button" tabindex="0" aria-label="View Finance Innovation Transformation Logo project">
+            <div class="pcard__media pcard__media--contain" aria-hidden="true"><img src="images/finance-innovation-transformation/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h2 class="pcard__title">Finance Innovation &amp; Transformation</h2>
+              <p class="pcard__desc">Logo and brand identity for eBay's internal Finance Innovation and Transformation program.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="gro-trending" role="button" tabindex="0" aria-label="View GRO Trending project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/gro-trending/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">GRO Trending</h2>
+              <p class="pcard__desc">Gross revenue optimization trend analysis and reporting tool for eBay's finance and analytics teams.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="innersourcing-dashboard" role="button" tabindex="0" aria-label="View Innersourcing Dashboard project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/innersourcing-dashboard/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">Innersourcing Dashboard</h2>
+              <p class="pcard__desc">Contributor activity tracking dashboard for eBay's innersourcing program, surfacing code contribution metrics.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="quickstrike" role="button" tabindex="0" aria-label="View QuickStrike project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/quickstrike/page-02.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">App / UX</span>
+              <h2 class="pcard__title">QuickStrike</h2>
+              <p class="pcard__desc">Rapid campaign creation tool enabling internal marketing teams to launch targeted promotions with minimal friction.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="third-party-dashboard" role="button" tabindex="0" aria-label="View Third Party Dashboard project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/third-party-dashboard/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">Third Party Dashboard</h2>
+              <p class="pcard__desc">Partner and vendor analytics reporting interface providing real-time visibility into third-party performance data.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="travel-reimbursement" role="button" tabindex="0" aria-label="View Travel and Reimbursement Expenses project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/travel-and-reimbursement/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h2 class="pcard__title">Travel &amp; Reimbursement Expenses</h2>
+              <p class="pcard__desc">Employee expense tracking and reimbursement management tool with approval workflows and spend analytics.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="ux-central-logo" role="button" tabindex="0" aria-label="View UX Central Logo project">
+            <div class="pcard__media pcard__media--contain" aria-hidden="true"><img src="images/ux-central-logo/page-01.jpg" alt=""></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h2 class="pcard__title">UX Central Logo</h2>
+              <p class="pcard__desc">Brand identity and logo design for eBay's centralized UX design system and shared component library.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="index.html" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--text">
+        LinkedIn
+        <svg class="btn__icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3.75 14.25L14.25 3.75M14.25 3.75H8.25M14.25 3.75V9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- ================================================
+       PROJECT DETAIL MODAL
+       ================================================ -->
+  <div class="modal-overlay" id="modal-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modal-close" aria-label="Close project detail">&#x2715;</button>
+      <div class="modal__hero" id="modal-hero" aria-hidden="true"><img id="modal-hero-img" src="" alt="" hidden></div>
+      <div class="modal__content">
+        <div class="modal__meta">
+          <span class="tag" id="modal-category"></span>
+        </div>
+        <h2 class="modal__title" id="modal-title"></h2>
+        <hr class="modal__divider">
+        <div class="modal__sections">
+          <div>
+            <p class="modal__section-label">Overview</p>
+            <p class="modal__section-text" id="modal-overview"></p>
+          </div>
+          <div id="modal-gallery-section">
+            <p class="modal__section-label">Gallery</p>
+            <div class="modal__gallery" id="modal-gallery"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const projects = {
+      'ai-academy': {
+        title: 'AI Academy',
+        category: 'Dashboard',
+        overview: 'AI Academy is an internal learning management platform designed to accelerate AI literacy across eBay\'s global workforce. The dashboard provides employees and managers with real-time visibility into course completion, skill assessments, and personalized learning paths. Designed to support eBay\'s strategic initiative to upskill over 10,000 employees in applied AI concepts.',
+        hero: 'images/ai-academy/page-01.jpg',
+        gallery: ['images/ai-academy/page-02.jpg', 'images/ai-academy/page-03.jpg'],
+      },
+      'ai-leadership-dashboard': {
+        title: 'AI Leadership Dashboard',
+        category: 'Dashboard',
+        overview: 'An executive-facing analytics dashboard providing senior leadership with a consolidated view of AI adoption, investment allocation, and program outcomes across all of eBay. Features trend analysis, team-level breakdowns, and progress-to-goal indicators to support strategic planning and resource decisions.',
+        hero: 'images/ai-leadership-dashboard/page-01.jpg',
+        gallery: [
+          'images/ai-leadership-dashboard/page-02.jpg',
+          'images/ai-leadership-dashboard/page-03.jpg',
+          'images/ai-leadership-dashboard/page-04.jpg',
+        ],
+      },
+      'arest': {
+        title: 'aRest',
+        category: 'App / UX',
+        overview: 'A REST API testing and documentation tool designed to reduce friction in developer workflows. The interface focuses on speed and clarity — allowing engineers to configure, execute, and inspect API calls with minimal overhead. Designed in close collaboration with eBay\'s internal platform teams.',
+        hero: 'images/arest/page-02.jpg',
+        gallery: [
+          'images/arest/page-01.jpg',
+          'images/arest/page-03.jpg',
+        ],
+      },
+      'consumer-insights-dashboard': {
+        title: 'Consumer Insights Dashboard',
+        category: 'Dashboard',
+        overview: 'A Bootstrap-based analytics dashboard surfacing consumer behavior data to product managers and marketing strategists. Aggregates purchase patterns, search trends, and engagement metrics into a single view, enabling data-driven decisions without requiring SQL or data engineering support.',
+        hero: 'images/consumer-insights-dashboard/page-01.jpg',
+        gallery: [
+          'images/consumer-insights-dashboard/page-02.jpg',
+          'images/consumer-insights-dashboard/page-07.jpg',
+          'images/consumer-insights-dashboard/page-04.jpg',
+          'images/consumer-insights-dashboard/page-09.jpg',
+        ],
+      },
+      'core-tech-headcount': {
+        title: 'Core Tech Headcount',
+        category: 'Dashboard',
+        overview: 'A workforce planning and headcount tracking visualization tool for eBay\'s Core Technology organization. Provides org-level and team-level views of current headcount, open roles, attrition, and hire velocity. Built to support quarterly planning cycles and executive reporting.',
+        hero: 'images/core-tech-headcount/page-01.jpg',
+      },
+      'finance-coe-branding': {
+        title: 'Finance COE Branding',
+        category: 'Branding',
+        overview: 'A complete visual identity system for eBay\'s Finance Center of Excellence, including logo design, color palette, typography guidelines, and branded templates for presentations, reports, and internal communications. The identity balances eBay\'s corporate aesthetic with a distinct COE personality.',
+        fit: 'contain',
+        hero: 'images/finance-coe-branding/page-02.jpg',
+        gallery: [
+          'images/finance-coe-branding/page-03.jpg',
+          'images/finance-coe-branding/page-04.jpg',
+          'images/finance-coe-branding/page-05.jpg',
+          'images/finance-coe-branding/page-06.jpg',
+        ],
+      },
+      'finance-innovation-transformation': {
+        title: 'Finance Innovation & Transformation',
+        category: 'Branding',
+        overview: 'Logo design and brand identity for eBay\'s internal Finance Innovation and Transformation program. The identity communicates a forward-thinking, tech-forward culture within the finance organization. Delivered across digital and print touchpoints including decks, badges, and internal portals.',
+        fit: 'contain',
+        hero: 'images/finance-innovation-transformation/page-01.jpg',
+        gallery: [
+          'images/finance-innovation-transformation/page-02.jpg',
+          'images/finance-innovation-transformation/page-03.jpg',
+          'images/finance-innovation-transformation/page-04.jpg',
+          'images/finance-innovation-transformation/page-05.jpg',
+        ],
+      },
+      'gro-trending': {
+        title: 'GRO Trending',
+        category: 'Dashboard',
+        overview: 'A gross revenue optimization trend analysis and reporting tool built for eBay\'s finance and analytics teams. Visualizes revenue drivers, churn indicators, and promotional lift across time periods. Designed to replace static spreadsheet reports with an interactive, filterable interface.',
+        hero: 'images/gro-trending/page-02.jpg',
+      },
+      'innersourcing-dashboard': {
+        title: 'Innersourcing Dashboard',
+        category: 'Dashboard',
+        overview: 'A contributor activity tracking dashboard for eBay\'s innersourcing program — an initiative encouraging engineers to contribute to internal shared codebases across team boundaries. The dashboard surfaces commit volume, reviewer activity, and cross-team collaboration metrics for program managers and engineering leads.',
+        hero: 'images/innersourcing-dashboard/page-02.jpg',
+        gallery: [
+          'images/innersourcing-dashboard/page-03.jpg',
+          'images/innersourcing-dashboard/page-04.jpg',
+        ],
+      },
+      'quickstrike': {
+        title: 'QuickStrike',
+        category: 'App / UX',
+        overview: 'QuickStrike is a rapid campaign creation tool that allows internal marketing teams at eBay to launch targeted promotions with minimal friction. The UX reduces a multi-step process into a guided, single-screen flow — cutting campaign setup time and reducing dependency on engineering support.',
+        hero: 'images/quickstrike/page-03.jpg',
+        galleryPosition: 'left',
+        gallery: [
+          'images/quickstrike/page-01.jpg',
+          'images/quickstrike/page-04.jpg',
+          'images/quickstrike/page-05.jpg',
+          'images/quickstrike/page-06.jpg',
+          'images/quickstrike/page-07.jpg',
+          'images/quickstrike/page-08.jpg',
+        ],
+      },
+      'third-party-dashboard': {
+        title: 'Third Party Dashboard',
+        category: 'Dashboard',
+        overview: 'A partner and vendor analytics reporting interface providing real-time visibility into third-party performance data at eBay. Enables partner relationship managers to monitor SLA compliance, integration health, and financial settlements without needing custom data pulls.',
+        hero: 'images/third-party-dashboard/page-02.jpg',
+        gallery: [
+          'images/third-party-dashboard/page-03.jpg',
+          'images/third-party-dashboard/page-04.jpg',
+          'images/third-party-dashboard/page-05.jpg',
+          'images/third-party-dashboard/page-06.jpg',
+        ],
+      },
+      'travel-reimbursement': {
+        title: 'Travel & Reimbursement Expenses',
+        category: 'Dashboard',
+        overview: 'An employee expense tracking and reimbursement management tool with approval workflows, policy compliance indicators, and spend analytics. Designed to reduce the time employees spend on expense reporting while giving finance managers better visibility into travel spend across the organization.',
+        hero: 'images/travel-and-reimbursement/page-01.jpg',
+      },
+      'ux-central-logo': {
+        title: 'UX Central Logo',
+        category: 'Branding',
+        overview: 'Brand identity and logo design for UX Central — eBay\'s internal hub for the centralized UX design system and shared component library. The mark needed to feel both systematic and human, reflecting the team\'s role as both a design operations function and a creative community.',
+        fit: 'contain',
+        hero: 'images/ux-central-logo/page-02.jpg',
+        gallery: [
+          'images/ux-central-logo/page-03.jpg',
+          'images/ux-central-logo/page-04.jpg',
+        ],
+      },
+    };
+
+    const overlay  = document.getElementById('modal-overlay');
+    const modal    = document.getElementById('modal');
+    const closeBtn = document.getElementById('modal-close');
+
+    function openModal(id) {
+      const project = projects[id];
+      if (!project) return;
+
+      document.getElementById('modal-title').textContent    = project.title;
+      document.getElementById('modal-category').textContent = project.category;
+      document.getElementById('modal-overview').textContent = project.overview;
+
+      // Hero image
+      const heroEl = document.getElementById('modal-hero');
+      const heroImg = document.getElementById('modal-hero-img');
+      heroEl.classList.toggle('modal__hero--contain', project.fit === 'contain');
+      heroImg.classList.toggle('img-contain', project.fit === 'contain');
+      if (project.hero) {
+        heroImg.src = project.hero;
+        heroImg.removeAttribute('hidden');
+      } else {
+        heroImg.src = '';
+        heroImg.setAttribute('hidden', '');
+      }
+
+      // Gallery — render however many images the project has
+      const gallerySection = document.getElementById('modal-gallery-section');
+      const gallery = document.getElementById('modal-gallery');
+      if (project.gallery?.length) {
+        const contain = project.fit === 'contain';
+        const imgLeft = project.galleryPosition === 'left';
+        gallery.innerHTML = project.gallery
+          .map(src => {
+            const imgClass = [contain ? 'img-contain' : '', imgLeft ? 'img-left' : ''].filter(Boolean).join(' ');
+            return `<div class="modal__gallery-img${contain ? ' modal__gallery-img--contain' : ''}"><img src="${src}" alt=""${imgClass ? ` class="${imgClass}"` : ''}></div>`;
+          })
+          .join('');
+        gallerySection.hidden = false;
+      } else {
+        gallery.innerHTML = '';
+        gallerySection.hidden = true;
+      }
+
+      modal.scrollTop = 0;
+      overlay.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    // Open on card click or Enter/Space keypress
+    document.querySelectorAll('.pcard').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.id));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card.dataset.id);
+        }
+      });
+    });
+
+    // Close on button, backdrop click, or Escape
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeModal();
+    });
+  </script>
+
+</body>
+</html>
