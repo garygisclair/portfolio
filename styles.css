@@ -243,6 +243,10 @@ ul {
   color: var(--color-text);
 }
 
+.section-title--sm {
+  font-size: 28px;
+}
+
 /* ============================================================
    NAVIGATION
    ============================================================ */
@@ -641,6 +645,112 @@ ul {
 }
 
 /* ============================================================
+   LIVE EXAMPLES TABLE
+   ============================================================ */
+.live-examples__disclaimer {
+  font-size: var(--text-small);
+  font-weight: 400;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: var(--space-3);
+}
+
+.live-examples {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.live-examples__th {
+  font-size: var(--text-caption);
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 16px;
+  background: rgba(144, 202, 249, 0.06);
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.live-examples__row {
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.live-examples__row:hover {
+  background: rgba(144, 202, 249, 0.04);
+}
+
+.live-examples__row:not(:last-child) .live-examples__td {
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.live-examples__td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+.live-examples__num {
+  width: 40px;
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.live-examples__thumb {
+  width: 140px;
+  padding: 10px 0 10px 16px;
+}
+
+.live-examples__thumb img {
+  width: 120px;
+  height: 72px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-card-border);
+  display: block;
+}
+
+.live-examples__name {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.live-examples__desc {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-text-dim);
+  line-height: 1.5;
+}
+
+.live-examples__link {
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 24px;
+}
+
+.live-examples__link a {
+  font-size: var(--text-btn-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.46px;
+  text-transform: uppercase;
+  transition: opacity 0.15s;
+}
+
+.live-examples__link a:hover {
+  opacity: 0.75;
+}
+
+/* ============================================================
    PORTFOLIO LIBRARY — PROJECT CARDS (with title/description)
    ============================================================ */
 .pcard {
@@ -990,6 +1100,22 @@ ul {
   /* Portfolio cards: single column */
   .portfolio-grid--3.pcard-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Live examples: hide # column and thumbnails */
+  .live-examples__num,
+  .live-examples__thumb,
+  .live-examples__th:first-child,
+  .live-examples__th:nth-child(2) {
+    display: none;
+  }
+
+  .live-examples__desc {
+    display: none;
+  }
+
+  .live-examples__name {
+    white-space: normal;
   }
 
   /* Modal: full-width, reduced padding */

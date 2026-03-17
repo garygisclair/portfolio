@@ -48,9 +48,65 @@
       </div>
     </section>
 
+    <!-- Live Examples -->
+    <section class="section" aria-label="Live examples">
+      <div class="container">
+        <header class="section-header section-header--blue">
+          <div class="section-label">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">Interactive Demos</span>
+          </div>
+          <h3 class="section-title section-title--sm">Live Examples</h3>
+        </header>
+        <p class="live-examples__disclaimer">These are interactive design prototypes created to demonstrate UI, data visualization, and design system concepts &mdash; not production applications.</p>
+        <table class="live-examples" role="table">
+          <thead>
+            <tr>
+              <th class="live-examples__th">#</th>
+              <th class="live-examples__th"></th>
+              <th class="live-examples__th">Project</th>
+              <th class="live-examples__th">Description</th>
+              <th class="live-examples__th"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="live-examples__row" data-href="https://garygisclair.github.io/supermega-design-system/">
+              <td class="live-examples__td live-examples__num">1</td>
+              <td class="live-examples__td live-examples__thumb"><img src="images/thumb-supermega.jpg" alt="Supermega Design System screenshot"></td>
+              <td class="live-examples__td live-examples__name">Supermega Design System</td>
+              <td class="live-examples__td live-examples__desc">Interactive design system with component documentation and usage guidelines</td>
+              <td class="live-examples__td live-examples__link">View Demo <span aria-hidden="true">&rarr;</span></td>
+            </tr>
+            <tr class="live-examples__row" data-href="https://garygisclair.github.io/company-ai-compare-dashboard/">
+              <td class="live-examples__td live-examples__num">2</td>
+              <td class="live-examples__td live-examples__thumb"><img src="images/thumb-ai-dashboard.jpg" alt="AI Leadership Dashboard screenshot"></td>
+              <td class="live-examples__td live-examples__name">AI Leadership Dashboard</td>
+              <td class="live-examples__td live-examples__desc">Analytics dashboard tracking AI adoption, usage trends, and performance across applications</td>
+              <td class="live-examples__td live-examples__link">View Demo <span aria-hidden="true">&rarr;</span></td>
+            </tr>
+            <tr class="live-examples__row" data-href="https://garygisclair.github.io/visualization-design-handbook/index.html">
+              <td class="live-examples__td live-examples__num">3</td>
+              <td class="live-examples__td live-examples__thumb"><img src="images/thumb-viz-handbook.jpg" alt="Visualization Design Handbook screenshot"></td>
+              <td class="live-examples__td live-examples__name">Visualization Design Handbook</td>
+              <td class="live-examples__td live-examples__desc">Figma design library encoding Tufte and Few principles for data visualization</td>
+              <td class="live-examples__td live-examples__link">View Demo <span aria-hidden="true">&rarr;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Card Grid -->
     <section class="section" aria-label="Project library">
       <div class="container">
+        <header class="section-header section-header--blue">
+          <div class="section-label">
+            <span class="section-label__line"></span>
+            <span class="section-label__text">Selected Work</span>
+          </div>
+          <h3 class="section-title section-title--sm">Project Gallery</h3>
+        </header>
+        <p class="live-examples__disclaimer">Any numbers, metrics, or data shown in these projects are generated for demonstration purposes and do not represent real data.</p>
         <div class="portfolio-grid portfolio-grid--3 pcard-grid">
 
           <article class="pcard" data-id="ai-academy" role="button" tabindex="0" aria-label="View AI Academy project">
@@ -232,6 +288,13 @@
   </div>
 
   <script>
+    // Clickable live-examples rows
+    document.querySelectorAll('.live-examples__row[data-href]').forEach(row => {
+      row.addEventListener('click', () => {
+        window.open(row.dataset.href, '_blank', 'noopener,noreferrer');
+      });
+    });
+
     const projects = {
       'ai-academy': {
         title: 'AI Academy',
