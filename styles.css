@@ -764,6 +764,11 @@ ul {
   transition: border-color 0.2s, transform 0.2s;
 }
 
+.pcard--link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .pcard:hover {
   border-color: var(--color-accent-border);
   transform: translateY(-2px);
