@@ -135,6 +135,26 @@
         <p class="live-examples__disclaimer">Any numbers, metrics, or data shown in these projects are generated for demonstration purposes and do not represent real data.</p>
         <div class="portfolio-grid portfolio-grid--2 pcard-grid">
 
+          <article class="pcard" data-id="code-audit-skill" role="button" tabindex="0" aria-label="View Code Audit Skill project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/code-audit-skill/page-01.jpg" alt="Code Audit Skill inventory showing 199 components"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Developer Tool</span>
+              <h3 class="pcard__title">Claude Skill: Code Audit</h3>
+              <p class="pcard__desc">Claude Code skill that auto-discovers every UI component in a codebase and generates interactive inventories with designer-facing reference pages.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-id="figma-audit-skill" role="button" tabindex="0" aria-label="View Figma Audit Skill project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/figma-audit-skill/page-01.jpg" alt="Figma Audit Skill inventory showing component library"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Developer Tool</span>
+              <h3 class="pcard__title">Claude Skill: Figma Audit</h3>
+              <p class="pcard__desc">Claude Code skill that crawls Figma component libraries and generates developer-facing reference pages with complete token manifests.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
+
           <article class="pcard" data-id="ai-academy" role="button" tabindex="0" aria-label="View AI Academy project">
             <div class="pcard__media" aria-hidden="true"><img src="images/ai-academy/page-01.jpg" alt="AI Academy dashboard"></div>
             <div class="pcard__body">
@@ -433,6 +453,24 @@
           'images/ux-central-logo/page-04.jpg',
         ],
       },
+      'code-audit-skill': {
+        title: 'Claude Skill: Code Audit',
+        category: 'Developer Tool',
+        overview: 'A Claude Code skill that extracts and audits design systems from any codebase. Point it at a repo — it auto-discovers every UI component, classifies them as Atom / Molecule / Organism, and generates an interactive inventory. Pick any component and get a full HTML reference page with every variant rendered, color tokens with inline swatches, interaction state documentation, and a Figma Import Cheat Sheet with auto-layout settings and variable definitions. Tested across React (styled-components, Tailwind), Angular (Sass M3), iOS (UIKit), and Android (Compose). Outputs Figma-native JSON specs for direct plugin import and drift detection.',
+        hero: 'images/code-audit-skill/page-01.jpg',
+        gallery: [
+          'images/code-audit-skill/page-02.jpg',
+        ],
+      },
+      'figma-audit-skill': {
+        title: 'Claude Skill: Figma Audit',
+        category: 'Developer Tool',
+        overview: 'The reverse of Code Audit — a Claude Code skill that crawls Figma component libraries via the MCP API and generates developer-facing reference pages. It discovers all component sets in a file, classifies them by atomic design tier, and extracts every design token bound to each component: colors, spacing, radius, font families, and text styles. Each component gets an HTML reference page with a visual variant grid (all styles × sizes × states rendered), 9 reference tables documenting every token a developer needs, and a Figma Import Cheat Sheet. Hidden BOOLEAN/INSTANCE_SWAP elements (icon slots, touch targets) are detected and rendered in a separate "With Optional Elements" section.',
+        hero: 'images/figma-audit-skill/page-01.jpg',
+        gallery: [
+          'images/figma-audit-skill/page-02.jpg',
+        ],
+      },
     };
 
     const overlay  = document.getElementById('modal-overlay');
@@ -466,10 +504,13 @@
       if (project.gallery?.length) {
         const contain = project.fit === 'contain';
         const imgLeft = project.galleryPosition === 'left';
+        const isSingle = project.gallery.length === 1;
+        gallery.style.gridTemplateColumns = isSingle ? '1fr' : '';
         gallery.innerHTML = project.gallery
           .map(src => {
             const imgClass = [contain ? 'img-contain' : '', imgLeft ? 'img-left' : ''].filter(Boolean).join(' ');
-            return `<div class="modal__gallery-img${contain ? ' modal__gallery-img--contain' : ''}"><img src="${src}" alt=""${imgClass ? ` class="${imgClass}"` : ''}></div>`;
+            const imgStyle = isSingle ? ' style="height:auto;max-height:600px;"' : '';
+            return `<div class="modal__gallery-img${contain ? ' modal__gallery-img--contain' : ''}"${imgStyle}><img src="${src}" alt=""${imgClass ? ` class="${imgClass}"` : ''}></div>`;
           })
           .join('');
         gallerySection.hidden = false;
