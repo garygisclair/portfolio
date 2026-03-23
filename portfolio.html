@@ -78,6 +78,16 @@
         <p class="live-examples__disclaimer">These are interactive design prototypes created to demonstrate UI, data visualization, and design system concepts &mdash; not production applications.</p>
         <div class="portfolio-grid portfolio-grid--2 pcard-grid">
 
+          <a class="pcard pcard--link" href="https://garygisclair.github.io/northstar/" target="_blank" rel="noopener noreferrer" aria-label="View NorthStar Analytics Dashboard demo">
+            <div class="pcard__media" aria-hidden="true"><img src="images/thumb-northstar.jpg" alt="NorthStar Analytics Dashboard preview"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Interactive Demo</span>
+              <h3 class="pcard__title">NorthStar Analytics Dashboard</h3>
+              <p class="pcard__desc">Enterprise analytics dashboard with KPI cards, curated reports catalog, and responsive three-panel layout</p>
+              <span class="pcard__cta" aria-hidden="true">View Demo →</span>
+            </div>
+          </a>
+
           <a class="pcard pcard--link" href="https://garygisclair.github.io/supermega-design-system/" target="_blank" rel="noopener noreferrer" aria-label="View Supermega Design System demo">
             <div class="pcard__media" aria-hidden="true"><img src="images/thumb-supermega.jpg" alt="Supermega Design System preview"></div>
             <div class="pcard__body">
@@ -144,6 +154,16 @@
         </header>
         <p class="live-examples__disclaimer">Any numbers, metrics, or data shown in these projects are generated for demonstration purposes and do not represent real data.</p>
         <div class="portfolio-grid portfolio-grid--2 pcard-grid">
+
+          <article class="pcard" data-id="northstar" role="button" tabindex="0" aria-label="View NorthStar Analytics Dashboard project">
+            <div class="pcard__media" aria-hidden="true"><img src="images/northstar/page-01.jpg" alt="NorthStar Analytics Dashboard"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h3 class="pcard__title">NorthStar Analytics Dashboard</h3>
+              <p class="pcard__desc">Enterprise analytics dashboard with KPI cards, curated reports catalog, and responsive three-panel layout.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project →</button>
+            </div>
+          </article>
 
           <article class="pcard" data-id="code-audit-skill" role="button" tabindex="0" aria-label="View Code Audit Skill project">
             <div class="pcard__media" aria-hidden="true"><img src="images/code-audit-skill/page-01.jpg" alt="Code Audit Skill inventory showing 199 components"></div>
@@ -336,6 +356,19 @@
 
   <script>
     const projects = {
+      'northstar': {
+        title: 'NorthStar Analytics Dashboard',
+        category: 'Dashboard',
+        overview: 'Enterprise analytics dashboard with a three-panel responsive layout, customizable KPI cards, a curated reports catalog with drag-reorder and group merging, dataset directory with SLA tracking, and a slideshow presentation system. Built with React 19, TypeScript, Tailwind v4, and Radix Themes. Dark mode default.',
+        hero: 'images/northstar/page-01.jpg',
+        galleryColumns: 1,
+        gallery: [
+          'images/northstar/page-02.jpg',
+          'images/northstar/page-03.jpg',
+          'images/northstar/page-04.jpg',
+          'images/northstar/page-05.jpg',
+        ],
+      },
       'ai-academy': {
         title: 'AI Academy',
         category: 'Dashboard',
@@ -514,7 +547,7 @@
       if (project.gallery?.length) {
         const contain = project.fit === 'contain';
         const imgLeft = project.galleryPosition === 'left';
-        const isSingle = project.gallery.length === 1;
+        const isSingle = project.gallery.length === 1 || project.galleryColumns === 1;
         gallery.style.gridTemplateColumns = isSingle ? '1fr' : '';
         gallery.innerHTML = project.gallery
           .map(src => {
