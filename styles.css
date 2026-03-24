@@ -2,25 +2,29 @@
    DESIGN TOKENS
    ============================================================ */
 :root {
-  /* Colors */
-  --color-bg:             #000000;
-  --color-card:           #131825;
-  --color-accent:         #90caf9;
-  --color-accent-dim:     rgba(144, 202, 249, 0.10);
-  --color-accent-glow:    rgba(144, 202, 249, 0.15);
-  --color-accent-line:    rgba(144, 202, 249, 0.18);
-  --color-accent-border:  rgba(144, 202, 249, 0.50);
-  --color-purple-border:  rgba(206, 147, 216, 0.25);
-  --color-card-border:    rgba(255, 255, 255, 0.10);
-  --color-nav-bg:         rgba(0, 0, 0, 0.96);
-  --color-nav-border:     rgba(255, 255, 255, 0.14);
-  --color-text:           #ffffff;
-  --color-text-muted:     rgba(255, 255, 255, 0.52);
-  --color-text-dim:       rgba(255, 255, 255, 0.42);
-  --color-pink:           #f48fb1;
+  /* Colors — warm light palette */
+  --color-bg:             #FAFAF5;
+  --color-card:           #FFFFFF;
+  --color-accent:         #C4764E;
+  --color-accent-hover:   #A85F3D;
+  --color-accent-dim:     rgba(196, 118, 78, 0.08);
+  --color-accent-glow:    rgba(196, 118, 78, 0.12);
+  --color-accent-line:    rgba(196, 118, 78, 0.15);
+  --color-accent-border:  rgba(196, 118, 78, 0.30);
+  --color-purple-border:  rgba(180, 130, 100, 0.20);
+  --color-card-border:    rgba(0, 0, 0, 0.06);
+  --color-nav-bg:         rgba(250, 250, 245, 0.92);
+  --color-nav-border:     rgba(0, 0, 0, 0.06);
+  --color-text:           #28281F;
+  --color-text-muted:     #44403B;
+  --color-text-dim:       #7E7D7A;
+  --color-pink:           #C4956A;
+  --color-surface-warm:   #F3EDE4;
+  --color-shadow:         rgba(120, 100, 80, 0.08);
 
   /* Typography */
-  --font:         'Roboto', sans-serif;
+  --font:         'DM Sans', sans-serif;
+  --font-heading: 'DM Serif Display', serif;
   --text-h2:      60px;
   --text-h3:      48px;
   --text-h6:      20px;
@@ -36,6 +40,7 @@
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
+  --space-6: 48px;
   --space-8: 64px;
 
   /* Layout */
@@ -44,8 +49,9 @@
   --pad-x:    48px;
 
   /* Border radius */
-  --radius-sm:   4px;
-  --radius-md:   8px;
+  --radius-sm:   12px;
+  --radius-md:   16px;
+  --radius-lg:   24px;
   --radius-pill: 9999px;
 }
 
@@ -98,31 +104,6 @@ ul {
   padding: var(--space-3) 0;
 }
 
-/* ============================================================
-   VIDEO BACKGROUND
-   ============================================================ */
-.bg-video {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  border-radius: var(--radius-md, 0);
-}
-
-.bg-video__media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.20;
-}
-
-.bg-video__overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, transparent 0%, #000 70%);
-}
 
 /* ============================================================
    LOGO
@@ -148,12 +129,10 @@ ul {
   gap: 8px;
   font-family: var(--font);
   font-weight: 500;
-  letter-spacing: 0.46px;
-  text-transform: uppercase;
   border-radius: var(--radius-sm);
   cursor: pointer;
   border: none;
-  transition: opacity 0.15s;
+  transition: opacity 0.25s ease-out;
   white-space: nowrap;
 }
 
@@ -173,11 +152,8 @@ ul {
 
 .btn--solid {
   background: var(--color-accent);
-  color: rgba(0, 0, 0, 0.87);
-  box-shadow:
-    0 1px 5px  rgba(0, 0, 0, 0.12),
-    0 2px 2px  rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.20);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(196, 118, 78, 0.20);
 }
 
 .btn--outline {
@@ -212,8 +188,8 @@ ul {
 
 .section-label__line {
   display: block;
-  width: 26px;
-  height: 3px;
+  width: 40px;
+  height: 2px;
   background: var(--color-accent);
   flex-shrink: 0;
 }
@@ -238,6 +214,7 @@ ul {
 .section-header--purple { border-top: 1px solid var(--color-purple-border); }
 
 .section-title {
+  font-family: var(--font-heading);
   font-size: var(--text-h3);
   font-weight: 400;
   line-height: 1.167;
@@ -257,11 +234,10 @@ ul {
   z-index: 100;
   height: var(--nav-h);
   background: var(--color-nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-nav-border);
-  box-shadow:
-    0 1px 5px rgba(0, 0, 0, 0.12),
-    0 2px 2px rgba(0, 0, 0, 0.14),
-    0 3px 1px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 1px 3px rgba(120, 100, 80, 0.06), 0 4px 12px rgba(120, 100, 80, 0.04);
 }
 
 .nav__inner {
@@ -283,12 +259,10 @@ ul {
 .nav__link {
   font-size: var(--text-btn-sm);
   font-weight: 500;
-  letter-spacing: 0.46px;
-  text-transform: uppercase;
   color: var(--color-text);
   padding: 4px 5px;
   border-radius: var(--radius-sm);
-  transition: color 0.15s;
+  transition: color 0.25s ease-out;
 }
 
 .nav__link:hover,
@@ -302,8 +276,35 @@ ul {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  background: linear-gradient(135deg, var(--color-surface-warm) 0%, var(--color-bg) 60%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(196, 118, 78, 0.06) 0%, transparent 70%);
+  border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(180, 130, 100, 0.05) 0%, transparent 70%);
+  border-radius: 55% 45% 40% 60% / 45% 55% 60% 40%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero__inner {
@@ -329,16 +330,18 @@ ul {
 }
 
 .hero__name {
+  font-family: var(--font-heading);
   font-size: var(--text-h2);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.5px;
   color: var(--color-text);
 }
 
 .hero__title {
+  font-family: var(--font-heading);
   font-size: var(--text-h2);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.5px;
   color: var(--color-accent);
@@ -368,11 +371,12 @@ ul {
 
 .hero__card {
   flex: 0 0 48%;
-  background: rgba(0, 0, 0, 0.30);
-  border: 2px solid var(--color-accent-border);
-  border-radius: var(--radius-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
   padding: var(--space-2);
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(120, 100, 80, 0.08), 0 2px 6px rgba(120, 100, 80, 0.04);
 }
 
 .hero__image {
@@ -509,8 +513,8 @@ ul {
   align-items: center;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-surface-warm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   font-size: var(--text-tag);
   font-weight: 400;
   color: var(--color-text);
@@ -565,7 +569,7 @@ ul {
 
 .timeline__connector {
   flex: 1;
-  width: 2px;
+  width: 1.5px;
   min-height: 16px;
   background: var(--color-accent-line);
 }
@@ -590,8 +594,9 @@ ul {
 .timeline__date--pink { color: var(--color-pink); }
 
 .timeline__role {
+  font-family: var(--font-heading);
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.4;
   letter-spacing: -0.2px;
   color: var(--color-text);
@@ -724,21 +729,19 @@ ul {
   font-size: var(--text-caption);
   font-weight: 500;
   color: var(--color-accent);
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
   text-align: left;
   padding: 12px 16px;
-  background: rgba(144, 202, 249, 0.06);
+  background: var(--color-accent-dim);
   border-bottom: 1px solid var(--color-card-border);
 }
 
 .live-examples__row {
-  transition: background 0.15s;
+  transition: background 0.25s ease-out;
   cursor: pointer;
 }
 
 .live-examples__row:hover {
-  background: rgba(144, 202, 249, 0.04);
+  background: rgba(196, 118, 78, 0.04);
 }
 
 .live-examples__row:not(:last-child) .live-examples__td {
@@ -797,9 +800,7 @@ ul {
   font-size: var(--text-btn-sm);
   font-weight: 500;
   color: var(--color-accent);
-  letter-spacing: 0.46px;
-  text-transform: uppercase;
-  transition: opacity 0.15s;
+  transition: opacity 0.25s ease-out;
 }
 
 .live-examples__link a:hover {
@@ -817,7 +818,7 @@ ul {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .pcard--link {
@@ -827,12 +828,13 @@ ul {
 
 .pcard:hover {
   border-color: var(--color-accent-border);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(120, 100, 80, 0.08), 0 2px 6px rgba(120, 100, 80, 0.04);
 }
 
 .pcard__media {
   height: 320px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-warm);
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -901,12 +903,10 @@ ul {
   font-size: var(--text-btn-sm);
   font-weight: 500;
   color: var(--color-accent);
-  letter-spacing: 0.46px;
-  text-transform: uppercase;
   background: none;
   border: none;
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.25s ease-out;
 }
 
 .pcard__cta:hover { opacity: 0.75; }
@@ -918,7 +918,9 @@ ul {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(44, 40, 35, 0.60);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -939,7 +941,7 @@ ul {
   max-height: 90vh;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(144, 202, 249, 0.3) transparent;
+  scrollbar-color: rgba(196, 118, 78, 0.3) transparent;
 }
 
 .modal__close {
@@ -950,8 +952,8 @@ ul {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-pill);
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--color-card-border);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   color: var(--color-text);
   font-size: 20px;
   line-height: 1;
@@ -960,14 +962,14 @@ ul {
   align-items: center;
   justify-content: center;
   font-family: var(--font);
-  transition: background 0.15s;
+  transition: background 0.25s ease-out;
 }
 
-.modal__close:hover { background: rgba(255, 255, 255, 0.15); }
+.modal__close:hover { background: rgba(0, 0, 0, 0.08); }
 
 .modal__hero {
   height: 480px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface-warm);
   overflow: hidden;
 }
 
@@ -993,8 +995,9 @@ ul {
 }
 
 .modal__title {
+  font-family: var(--font-heading);
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.25px;
   color: var(--color-text);
@@ -1017,7 +1020,6 @@ ul {
   font-weight: 500;
   color: var(--color-accent);
   letter-spacing: 0.4px;
-  text-transform: uppercase;
   margin-bottom: var(--space-1);
 }
 
@@ -1039,7 +1041,7 @@ ul {
   height: 300px;
   width: 100%;
   min-width: 0;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--color-surface-warm);
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1227,4 +1229,37 @@ ul {
   .portfolio-grid--3 .card:last-child {
     grid-column: 1 / -1;
   }
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* ============================================================
+   NOISE TEXTURE OVERLAY
+   ============================================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 9999;
 }

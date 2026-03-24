@@ -57,7 +57,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -88,17 +88,10 @@
          HERO
          ================================================ -->
     <section class="section hero" aria-label="Introduction">
-      <!-- Video Background -->
-      <div class="bg-video" aria-hidden="true">
-        <video class="bg-video__media" autoplay loop muted playsinline>
-          <source src="images/grok.mp4" type="video/mp4">
-        </video>
-        <div class="bg-video__overlay"></div>
-      </div>
       <div class="container">
         <div class="hero__inner">
 
-          <div class="hero__content">
+          <div class="hero__content reveal">
             <div class="section-label" aria-hidden="true">
               <span class="section-label__line"></span>
             </div>
@@ -114,7 +107,7 @@
             </div>
           </div>
 
-          <div class="hero__card">
+          <div class="hero__card reveal">
             <img
               src="images/hero-demo-aidashboard.png"
               alt="AI Leadership Dashboard — analytics platform tracking usage trends and performance across applications"
@@ -132,7 +125,7 @@
     <section class="section" id="portfolio" aria-label="Portfolio">
       <div class="container">
 
-        <header class="section-header section-header--blue">
+        <header class="section-header section-header--blue reveal">
           <div class="section-label">
             <span class="section-label__line"></span>
             <span class="section-label__text">Selected Work</span>
@@ -208,7 +201,7 @@
     <section class="section" id="experience" aria-label="Experience">
       <div class="container">
 
-        <header class="section-header section-header--purple">
+        <header class="section-header section-header--purple reveal">
           <div class="section-label">
             <span class="section-label__line"></span>
             <span class="section-label__text">Career</span>
@@ -375,5 +368,24 @@
     </div>
   </footer>
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach(function(el) { el.classList.add('reveal--visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(function(el) { observer.observe(el); });
+  });
+</script>
 </body>
 </html>
