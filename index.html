@@ -57,8 +57,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
 
@@ -70,9 +71,11 @@
       </a>
       <div class="nav__links">
         <a href="#" class="nav__link nav__link--active">Home</a>
-        <a href="portfolio.html" class="nav__link">Portfolio</a>
+        <a href="#portfolio" class="nav__link">Portfolio</a>
         <a href="#experience" class="nav__link">Experience</a>
-        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm">
+      </div>
+      <div class="nav__actions">
+        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--nav">
           LinkedIn
           <svg class="btn__icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M3.75 14.25L14.25 3.75M14.25 3.75H8.25M14.25 3.75V9.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,12 +98,8 @@
             <div class="section-label" aria-hidden="true">
               <span class="section-label__line"></span>
             </div>
-            <div class="hero__text">
-              <h1 class="hero__name">Gary Gisclair</h1>
-              <p class="hero__title">AI-Augmented Product Designer</p>
-              <p class="hero__subtitle">UX/UI, Data Visualization &amp; Design Systems</p>
-            </div>
-            <p class="hero__bio">Product designer with 14+ years creating data-driven enterprise applications, analytics dashboards, and scalable UI systems. I transform complex data into clear visual interfaces grounded in proven visualization design principles. The reporting platform I designed earned the highest NPS and CSAT scores among its users.</p>
+            <h1 class="hero__heading">UI/UX Product Designer, <br>Design Systems &amp; Data Visualization</h1>
+            <p class="hero__bio">I'm a senior product designer with 15 years of experience building data-driven enterprise platforms, analytics dashboards, and scalable design systems for Fortune 500 teams. I specialize in transforming complex datasets into clear, accessible visual interfaces that accelerate stakeholder decision-making. I'm experienced leading cross-functional collaboration with product, engineering, analytics, and AI teams across user research, prototyping, design-to-dev handoff, and production.</p>
             <div class="hero__ctas">
               <a href="#portfolio" class="btn btn--solid btn--lg">Examples</a>
               <a href="#experience" class="btn btn--outline btn--lg">Experience</a>
@@ -108,11 +107,7 @@
           </div>
 
           <div class="hero__card reveal">
-            <img
-              src="images/hero-demo-aidashboard.png"
-              alt="AI Leadership Dashboard — analytics platform tracking usage trends and performance across applications"
-              class="hero__image"
-            >
+            <img src="images/hero-cubes.png" alt="Isometric design system blocks illustration" class="hero__image">
           </div>
 
         </div>
@@ -220,7 +215,11 @@
                 <li class="skill-tag">User Experience Design</li>
                 <li class="skill-tag">Interaction Design</li>
                 <li class="skill-tag">Information Architecture</li>
-                <li class="skill-tag">Enterprise UX</li>
+                <li class="skill-tag">Prototyping &amp; Wireframing</li>
+                <li class="skill-tag">User Research &amp; Usability Testing</li>
+                <li class="skill-tag">Accessibility / WCAG</li>
+                <li class="skill-tag">Stakeholder Management</li>
+                <li class="skill-tag">Visual Design &amp; Typography</li>
               </ul>
             </div>
             <div class="skills__group">
@@ -228,25 +227,26 @@
               <ul class="skills__tags">
                 <li class="skill-tag">Data Visualization</li>
                 <li class="skill-tag">Analytics Dashboards</li>
-                <li class="skill-tag">Reporting Systems</li>
-                <li class="skill-tag">Complex Workflow Design</li>
-                <li class="skill-tag">UI Pattern Libraries</li>
+                <li class="skill-tag">Design Systems &amp; Design Tokens</li>
+                <li class="skill-tag">Component Libraries</li>
+                <li class="skill-tag">DesignOps</li>
               </ul>
             </div>
             <div class="skills__group">
               <p class="skills__heading">AI-AUGMENTED DESIGN</p>
               <ul class="skills__tags">
-                <li class="skill-tag">AI-Assisted Workflows</li>
-                <li class="skill-tag">Prompt-Driven Exploration</li>
-                <li class="skill-tag">AI-Supported UX Research</li>
+                <li class="skill-tag">AI-assisted design workflows</li>
+                <li class="skill-tag">Figma-to-production automation</li>
               </ul>
             </div>
             <div class="skills__group">
-              <p class="skills__heading">CREATIVE &amp; BRAND</p>
+              <p class="skills__heading">TOOLS</p>
               <ul class="skills__tags">
-                <li class="skill-tag">Brand Design</li>
-                <li class="skill-tag">Logo Design</li>
-                <li class="skill-tag">Creative Direction</li>
+                <li class="skill-tag">Figma / FigJam</li>
+                <li class="skill-tag">Storybook / React</li>
+                <li class="skill-tag">HTML / CSS / JS</li>
+
+                <li class="skill-tag">Jira / Confluence</li>
               </ul>
             </div>
           </aside>
@@ -263,27 +263,25 @@
                 <p class="timeline__date">Mar 2012 – Feb 2026 · 14 yrs</p>
                 <h3 class="timeline__role">Manager, UI &amp; UX Design</h3>
                 <p class="timeline__company">eBay</p>
-                <p class="timeline__desc">Led UX and product design for enterprise analytics platforms serving executives, data scientists, and cross-functional teams.</p>
+                <p class="timeline__desc">Applied design thinking to lead UX and product design for internal enterprise tools supporting finance, analytics, and operational reporting across a 30,000+ employee organization.</p>
                 <ul class="timeline__bullets">
-                  <li>Built QuickStrike, a flagship reporting platform used by finance analysts through the CFO, eventually expanding across 6+ teams over 14 years</li>
-                  <li>Designed analytics dashboards and multi-step intake workflows for Finance, Tax, IT, HR, Marketing, and eBay for Charity</li>
-                  <li>Created A/B prototypes in Figma and ran survey-driven validation with product managers</li>
-                  <li>Designed a standardized UI pattern library supporting eBay's internal AI applications</li>
-                  <li>Produced print-ready brand assets for internal teams including logos, apparel, electronics branding, stickers, and posters</li>
+                  <li>Designed enterprise analytics dashboards through user research, prototyping, and usability testing, serving 500+ cross-functional stakeholders</li>
+                  <li>Architected scalable design systems, component libraries, and design tokens serving multiple internal products with documented design-to-dev handoff</li>
+                  <li>Partnered with engineering and AI teams to develop accessible, intelligent reporting interfaces that replaced manual workflows</li>
                 </ul>
                 <ul class="timeline__highlights">
-                  <li>Highest NPS &amp; CSAT scores among data scientists and analysts using the platform</li>
-                  <li>Standardized UI patterns across 6+ teams, reducing design-to-dev handoff inconsistency</li>
-                  <li>Platform grew from single-team finance tool to company-wide reporting standard</li>
+                  <li>Developed UX strategy that consolidated 4 legacy reporting tools into a single analytics platform, reducing time-to-insight for finance stakeholders up to CFO level</li>
+                  <li>Enabled self-service data exploration for finance and ops teams through data-driven design, cutting ad-hoc requests</li>
+                  <li>Established design governance and reusable component standards adopted across multiple product teams</li>
                 </ul>
                 <ul class="tag-list" aria-label="Skills used">
-                  <li class="tag">Product Design</li>
+                  <li class="tag">Design Systems</li>
                   <li class="tag">Data Visualization</li>
                   <li class="tag">Analytics Dashboards</li>
-                  <li class="tag">Design Systems</li>
-                  <li class="tag">Figma</li>
                   <li class="tag">Enterprise UX</li>
+                  <li class="tag">User Research</li>
                   <li class="tag">AI-Augmented Design</li>
+                  <li class="tag">Figma</li>
                 </ul>
               </div>
             </div>
@@ -297,11 +295,10 @@
                 <p class="timeline__date">Oct 2011 – Mar 2012 · 6 mos</p>
                 <h3 class="timeline__role">Art Director</h3>
                 <p class="timeline__company">Highwood Design</p>
-                <p class="timeline__desc">Directed web and brand design for a UK-based development firm, collaborating across distributed teams.</p>
                 <ul class="timeline__bullets">
-                  <li>Developed reusable CMS components and UI structures for scalable client websites</li>
-                  <li>Designed intake forms that streamlined client data collection workflows</li>
-                  <li>Created print-ready brand identities and promotional materials for multiple clients</li>
+                  <li>Led design for web and brand projects for a diverse client portfolio</li>
+                  <li>Developed CMS components and UI structures for scalable websites</li>
+                  <li>Designed user-friendly intake forms to improve client data collection</li>
                 </ul>
                 <ul class="tag-list" aria-label="Skills used">
                   <li class="tag">Brand Design</li>
@@ -321,10 +318,10 @@
                 <p class="timeline__date">Sep 2010 – Nov 2011 · 1 yr 3 mos</p>
                 <h3 class="timeline__role">Creative Consultant</h3>
                 <p class="timeline__company">Joomlashack</p>
-                <p class="timeline__desc">Designed CMS website templates adopted across Joomlashack's client base, focused on usability and flexibility.</p>
                 <ul class="timeline__bullets">
-                  <li>Built scalable templates with clear navigation structures and content hierarchies</li>
+                  <li>Designed CMS website templates focused on usability and flexibility</li>
                   <li>Created brand identities and visual systems for client projects</li>
+                  <li>Improved UX through clear navigation structures and content design</li>
                 </ul>
                 <ul class="tag-list" aria-label="Skills used">
                   <li class="tag">Brand Design</li>
@@ -340,7 +337,7 @@
                 <div class="timeline__dot timeline__dot--pink"></div>
               </div>
               <div class="timeline__body">
-                <p class="timeline__date timeline__date--pink">EDUCATION</p>
+                <p class="timeline__date timeline__date--pink">EDUCATION 2000 - 2005</p>
                 <h3 class="timeline__role">Bachelor of Arts (B.A.), Graphic Design</h3>
                 <p class="timeline__company">University of Louisiana at Lafayette</p>
               </div>
