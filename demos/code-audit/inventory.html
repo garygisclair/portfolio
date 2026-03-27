@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outline Component Inventory — Code Audit</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f5f5f5;
+      color: #111319;
+      padding: 48px 40px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { font-size: 13px; color: #888; margin-bottom: 12px; }
+
+    /* ── Summary strip ── */
+    .summary-strip {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 40px; padding: 16px 20px;
+      background: #fff; border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    .summary-stat { display: flex; flex-direction: column; }
+    .summary-stat .val { font-size: 28px; font-weight: 700; color: #0366d6; line-height: 1.1; }
+    .summary-stat .lbl { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin-top: 2px; }
+
+    /* ── Stack info ── */
+    .stack-info {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .stack-tag {
+      font-size: 11px; font-weight: 600; padding: 4px 10px;
+      border-radius: 4px; background: #e8f0fe; color: #174ea6;
+    }
+
+    /* ── Tier sections ── */
+    .tier { margin-bottom: 48px; }
+    .tier-header {
+      display: flex; align-items: baseline; gap: 10px;
+      margin-bottom: 16px; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px;
+    }
+    .tier-title { font-size: 16px; font-weight: 700; }
+    .tier-count {
+      font-size: 12px; font-weight: 600; color: #fff;
+      background: #0366d6; border-radius: 10px; padding: 2px 8px;
+    }
+    .tier-desc { font-size: 12px; color: #888; }
+
+    /* ── Component table ── */
+    .comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .comp-table th {
+      text-align: left; font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: #888;
+      padding: 6px 12px; border-bottom: 1px solid #ddd; background: #fafafa;
+    }
+    .comp-table td {
+      padding: 7px 12px; border-bottom: 1px solid #eee; vertical-align: top;
+    }
+    .comp-table tr:hover td { background: #f0f6ff; }
+    .comp-name { font-weight: 600; color: #111; }
+    .comp-file { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; font-size: 11px; color: #555; }
+    .comp-exports { font-size: 11px; color: #666; }
+    .comp-lines { font-size: 12px; font-weight: 600; color: #333; text-align: right; }
+    .comp-lines-bar {
+      display: inline-block; height: 6px; border-radius: 3px;
+      background: #0366d6; opacity: 0.3; vertical-align: middle; margin-left: 6px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 48px; padding-top: 16px; border-top: 1px solid #ddd;
+      font-size: 11px; color: #aaa;
+    }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .filter-bar input {
+      font-size: 13px; padding: 6px 12px; border: 1px solid #ddd;
+      border-radius: 6px; width: 260px; font-family: inherit;
+    }
+    .filter-bar input:focus { outline: none; border-color: #0366d6; box-shadow: 0 0 0 2px rgba(3,102,214,0.15); }
+    .filter-btn {
+      font-size: 11px; font-weight: 600; padding: 6px 12px;
+      border: 1px solid #ddd; border-radius: 6px; background: #fff;
+      cursor: pointer; color: #555; transition: all 0.15s;
+    }
+    .filter-btn:hover { border-color: #0366d6; color: #0366d6; }
+    .filter-btn.active { background: #0366d6; color: #fff; border-color: #0366d6; }
+    .match-count { font-size: 12px; color: #888; margin-left: 8px; }
+  </style>
+</head>
+<body>
+
+<h1>Component Inventory: Outline</h1>
+<p class="subtitle">Auto-discovered from <code>app/components/</code> — 2026-03-19</p>
+
+<div class="stack-info">
+  <span class="stack-tag">React 17</span>
+  <span class="stack-tag">styled-components 5</span>
+  <span class="stack-tag">MobX</span>
+  <span class="stack-tag">Radix UI</span>
+  <span class="stack-tag">TypeScript</span>
+  <span class="stack-tag">Vite</span>
+</div>
+
+<div class="summary-strip">
+  <div class="summary-stat"><span class="val">199</span><span class="lbl">Visual Components</span></div>
+  <div class="summary-stat"><span class="val">40</span><span class="lbl">Atoms</span></div>
+  <div class="summary-stat"><span class="val">62</span><span class="lbl">Molecules</span></div>
+  <div class="summary-stat"><span class="val">78</span><span class="lbl">Organisms</span></div>
+  <div class="summary-stat"><span class="val">19</span><span class="lbl">Templates / Pages</span></div>
+</div>
+
+<div class="filter-bar">
+  <input type="text" id="searchInput" placeholder="Filter components…" oninput="filterTable()">
+  <button class="filter-btn active" data-tier="all" onclick="filterTier(this)">All</button>
+  <button class="filter-btn" data-tier="atom" onclick="filterTier(this)">Atoms</button>
+  <button class="filter-btn" data-tier="molecule" onclick="filterTier(this)">Molecules</button>
+  <button class="filter-btn" data-tier="organism" onclick="filterTier(this)">Organisms</button>
+  <button class="filter-btn" data-tier="template" onclick="filterTier(this)">Templates</button>
+  <span class="match-count" id="matchCount"></span>
+</div>
+
+<!-- ════════════════════════════════════════
+     ATOMS
+     ════════════════════════════════════════ -->
+<div class="tier" data-tier="atom">
+  <div class="tier-header">
+    <span class="tier-title">Atoms</span>
+    <span class="tier-count">40</span>
+    <span class="tier-desc">Self-contained primitives — no child component composition</span>
+  </div>
+  <table class="comp-table">
+    <thead><tr><th>#</th><th>Component</th><th>File</th><th>Exports</th><th style="text-align:right">Lines</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="comp-name">Arrow</td><td class="comp-file">app/components/Arrow.tsx</td><td class="comp-exports">Arrow</td><td class="comp-lines">14<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>2</td><td class="comp-name">Badge</td><td class="comp-file">app/components/Badge.ts</td><td class="comp-exports">Badge</td><td class="comp-lines">27<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>3</td><td class="comp-name">ButtonLarge</td><td class="comp-file">app/components/ButtonLarge.ts</td><td class="comp-exports">ButtonLarge</td><td class="comp-lines">12<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>4</td><td class="comp-name">ButtonSmall</td><td class="comp-file">app/components/ButtonSmall.ts</td><td class="comp-exports">ButtonSmall</td><td class="comp-lines">15<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>5</td><td class="comp-name">CircularProgressBar</td><td class="comp-file">app/components/CircularProgressBar.tsx</td><td class="comp-exports">CircularProgressBar</td><td class="comp-lines">79<span class="comp-lines-bar" style="width:16px"></span></td></tr>
+      <tr><td>6</td><td class="comp-name">ClickablePadding</td><td class="comp-file">app/components/ClickablePadding.ts</td><td class="comp-exports">ClickablePadding</td><td class="comp-lines">12<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>7</td><td class="comp-name">ColorButton</td><td class="comp-file">app/components/ColorButton.tsx</td><td class="comp-exports">ColorButton</td><td class="comp-lines">63<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>8</td><td class="comp-name">DelayedMount</td><td class="comp-file">app/components/DelayedMount.ts</td><td class="comp-exports">DelayedMount</td><td class="comp-lines">23<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>9</td><td class="comp-name">Divider</td><td class="comp-file">app/components/Divider.ts</td><td class="comp-exports">Divider</td><td class="comp-lines">11<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>10</td><td class="comp-name">Emoji</td><td class="comp-file">app/components/Emoji.tsx</td><td class="comp-exports">Emoji</td><td class="comp-lines">20<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>11</td><td class="comp-name">Empty</td><td class="comp-file">app/components/Empty.ts</td><td class="comp-exports">Empty</td><td class="comp-lines">9<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>12</td><td class="comp-name">Fade</td><td class="comp-file">app/components/Fade.tsx</td><td class="comp-exports">Fade</td><td class="comp-lines">28<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>13</td><td class="comp-name">Flex</td><td class="comp-file">app/components/Flex.tsx</td><td class="comp-exports">Flex</td><td class="comp-lines">3<span class="comp-lines-bar" style="width:1px"></span></td></tr>
+      <tr><td>14</td><td class="comp-name">Heading</td><td class="comp-file">app/components/Heading.ts</td><td class="comp-exports">Heading</td><td class="comp-lines">11<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>15</td><td class="comp-name">InputLarge</td><td class="comp-file">app/components/InputLarge.ts</td><td class="comp-exports">InputLarge</td><td class="comp-lines">14<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>16</td><td class="comp-name">Key</td><td class="comp-file">app/components/Key.ts</td><td class="comp-exports">Key</td><td class="comp-lines">23<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>17</td><td class="comp-name">LazyLoad</td><td class="comp-file">app/components/LazyLoad.ts</td><td class="comp-exports">LazyLoad</td><td class="comp-lines">52<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>18</td><td class="comp-name">LocaleTime</td><td class="comp-file">app/components/LocaleTime.tsx</td><td class="comp-exports">LocaleTime</td><td class="comp-lines">25<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>19</td><td class="comp-name">MeasuredContainer</td><td class="comp-file">app/components/MeasuredContainer.tsx</td><td class="comp-exports">MeasuredContainer</td><td class="comp-lines">28<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>20</td><td class="comp-name">MouseSafeArea</td><td class="comp-file">app/components/MouseSafeArea.tsx</td><td class="comp-exports">MouseSafeArea</td><td class="comp-lines">92<span class="comp-lines-bar" style="width:18px"></span></td></tr>
+      <tr><td>21</td><td class="comp-name">Notice</td><td class="comp-file">app/components/Notice.tsx</td><td class="comp-exports">Notice</td><td class="comp-lines">49<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>22</td><td class="comp-name">NudeButton</td><td class="comp-file">app/components/NudeButton.tsx</td><td class="comp-exports">NudeButton</td><td class="comp-lines">36<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>23</td><td class="comp-name">PageTheme</td><td class="comp-file">app/components/PageTheme.ts</td><td class="comp-exports">PageTheme</td><td class="comp-lines">31<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>24</td><td class="comp-name">PlaceholderText</td><td class="comp-file">app/components/PlaceholderText.tsx</td><td class="comp-exports">PlaceholderText</td><td class="comp-lines">52<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>25</td><td class="comp-name">PluginIcon</td><td class="comp-file">app/components/PluginIcon.tsx</td><td class="comp-exports">PluginIcon</td><td class="comp-lines">42<span class="comp-lines-bar" style="width:8px"></span></td></tr>
+      <tr><td>26</td><td class="comp-name">Portal</td><td class="comp-file">app/components/Portal.tsx</td><td class="comp-exports">Portal</td><td class="comp-lines">23<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>27</td><td class="comp-name">ReadingTime</td><td class="comp-file">app/components/ReadingTime.tsx</td><td class="comp-exports">ReadingTime</td><td class="comp-lines">42<span class="comp-lines-bar" style="width:8px"></span></td></tr>
+      <tr><td>28</td><td class="comp-name">ResizingHeightContainer</td><td class="comp-file">app/components/ResizingHeightContainer.tsx</td><td class="comp-exports">ResizingHeightContainer</td><td class="comp-lines">55<span class="comp-lines-bar" style="width:11px"></span></td></tr>
+      <tr><td>29</td><td class="comp-name">SkipNavContent</td><td class="comp-file">app/components/SkipNavContent.tsx</td><td class="comp-exports">SkipNavContent</td><td class="comp-lines">5<span class="comp-lines-bar" style="width:1px"></span></td></tr>
+      <tr><td>30</td><td class="comp-name">SkipNavLink</td><td class="comp-file">app/components/SkipNavLink.tsx</td><td class="comp-exports">SkipNavLink</td><td class="comp-lines">33<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>31</td><td class="comp-name">Subheading</td><td class="comp-file">app/components/Subheading.tsx</td><td class="comp-exports">Subheading</td><td class="comp-lines">45<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>32</td><td class="comp-name">SwatchButton</td><td class="comp-file">app/components/SwatchButton.tsx</td><td class="comp-exports">SwatchButton</td><td class="comp-lines">108<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <tr><td>33</td><td class="comp-name">Time</td><td class="comp-file">app/components/Time.tsx</td><td class="comp-exports">Time</td><td class="comp-lines">31<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>34</td><td class="comp-name">UnreadBadge</td><td class="comp-file">app/components/UnreadBadge.tsx</td><td class="comp-exports">UnreadBadge</td><td class="comp-lines">12<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>35</td><td class="comp-name">ArrowIcon</td><td class="comp-file">app/components/Icons/ArrowIcon.tsx</td><td class="comp-exports">ArrowRightIcon</td><td class="comp-lines">16<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>36</td><td class="comp-name">CircleIcon</td><td class="comp-file">app/components/Icons/CircleIcon.tsx</td><td class="comp-exports">CircleIcon</td><td class="comp-lines">47<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>37</td><td class="comp-name">DottedCircleIcon</td><td class="comp-file">app/components/Icons/DottedCircleIcon.tsx</td><td class="comp-exports">DottedCircleIcon</td><td class="comp-lines">9<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>38</td><td class="comp-name">GoogleIcon</td><td class="comp-file">app/components/Icons/GoogleIcon.tsx</td><td class="comp-exports">GoogleIcon</td><td class="comp-lines">23<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>39</td><td class="comp-name">LanguageIcon</td><td class="comp-file">app/components/Icons/LanguageIcon.tsx</td><td class="comp-exports">LanguageIcon</td><td class="comp-lines">30<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>40</td><td class="comp-name">MarkdownIcon</td><td class="comp-file">app/components/Icons/MarkdownIcon.tsx</td><td class="comp-exports">MarkdownIcon</td><td class="comp-lines">33<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════
+     MOLECULES
+     ════════════════════════════════════════ -->
+<div class="tier" data-tier="molecule">
+  <div class="tier-header">
+    <span class="tier-title">Molecules</span>
+    <span class="tier-count">62</span>
+    <span class="tier-desc">Small composites — combine atoms into functional units</span>
+  </div>
+  <table class="comp-table">
+    <thead><tr><th>#</th><th>Component</th><th>File</th><th>Exports</th><th style="text-align:right">Lines</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="comp-name">ActionButton</td><td class="comp-file">app/components/ActionButton.tsx</td><td class="comp-exports">ActionButton</td><td class="comp-lines">88<span class="comp-lines-bar" style="width:18px"></span></td></tr>
+      <tr><td>2</td><td class="comp-name">Avatar</td><td class="comp-file">app/components/Avatar/Avatar.tsx</td><td class="comp-exports">Avatar, AvatarSize</td><td class="comp-lines">113<span class="comp-lines-bar" style="width:23px"></span></td></tr>
+      <tr><td>3</td><td class="comp-name">AvatarWithPresence</td><td class="comp-file">app/components/Avatar/AvatarWithPresence.tsx</td><td class="comp-exports">AvatarWithPresence</td><td class="comp-lines">166<span class="comp-lines-bar" style="width:33px"></span></td></tr>
+      <tr><td>4</td><td class="comp-name">Branding</td><td class="comp-file">app/components/Branding.tsx</td><td class="comp-exports">Branding</td><td class="comp-lines">48<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>5</td><td class="comp-name">Breadcrumb</td><td class="comp-file">app/components/Breadcrumb.tsx</td><td class="comp-exports">Breadcrumb</td><td class="comp-lines">125<span class="comp-lines-bar" style="width:25px"></span></td></tr>
+      <tr><td>6</td><td class="comp-name">Button</td><td class="comp-file">app/components/Button.tsx</td><td class="comp-exports">Button</td><td class="comp-lines">216<span class="comp-lines-bar" style="width:43px"></span></td></tr>
+      <tr><td>7</td><td class="comp-name">ButtonLink</td><td class="comp-file">app/components/ButtonLink.tsx</td><td class="comp-exports">ButtonLink</td><td class="comp-lines">14<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>8</td><td class="comp-name">CenteredContent</td><td class="comp-file">app/components/CenteredContent.tsx</td><td class="comp-exports">CenteredContent</td><td class="comp-lines">41<span class="comp-lines-bar" style="width:8px"></span></td></tr>
+      <tr><td>9</td><td class="comp-name">ChangeLanguage</td><td class="comp-file">app/components/ChangeLanguage.tsx</td><td class="comp-exports">ChangeLanguage</td><td class="comp-lines">17<span class="comp-lines-bar" style="width:3px"></span></td></tr>
+      <tr><td>10</td><td class="comp-name">Collapsible</td><td class="comp-file">app/components/Collapsible.tsx</td><td class="comp-exports">Collapsible</td><td class="comp-lines">112<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <tr><td>11</td><td class="comp-name">Collaborators</td><td class="comp-file">app/components/Collaborators.tsx</td><td class="comp-exports">Collaborators</td><td class="comp-lines">179<span class="comp-lines-bar" style="width:36px"></span></td></tr>
+      <tr><td>12</td><td class="comp-name">CollectionBreadcrumb</td><td class="comp-file">app/components/CollectionBreadcrumb.tsx</td><td class="comp-exports">CollectionBreadcrumb</td><td class="comp-lines">38<span class="comp-lines-bar" style="width:8px"></span></td></tr>
+      <tr><td>13</td><td class="comp-name">CollectionIcon</td><td class="comp-file">app/components/Icons/CollectionIcon.tsx</td><td class="comp-exports">ResolvedCollectionIcon</td><td class="comp-lines">67<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>14</td><td class="comp-name">ConnectedIcon</td><td class="comp-file">app/components/Icons/ConnectedIcon.tsx</td><td class="comp-exports">ConnectedIcon</td><td class="comp-lines">19<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>15</td><td class="comp-name">ContentEditable</td><td class="comp-file">app/components/ContentEditable.tsx</td><td class="comp-exports">ContentEditable</td><td class="comp-lines">214<span class="comp-lines-bar" style="width:43px"></span></td></tr>
+      <tr><td>16</td><td class="comp-name">CopyToClipboard</td><td class="comp-file">app/components/CopyToClipboard.ts</td><td class="comp-exports">CopyToClipboard</td><td class="comp-lines">56<span class="comp-lines-bar" style="width:11px"></span></td></tr>
+      <tr><td>17</td><td class="comp-name">DocumentBreadcrumb</td><td class="comp-file">app/components/DocumentBreadcrumb.tsx</td><td class="comp-exports">DocumentBreadcrumb</td><td class="comp-lines">186<span class="comp-lines-bar" style="width:37px"></span></td></tr>
+      <tr><td>18</td><td class="comp-name">EditableTitle</td><td class="comp-file">app/components/EditableTitle.tsx</td><td class="comp-exports">EditableTitle</td><td class="comp-lines">192<span class="comp-lines-bar" style="width:38px"></span></td></tr>
+      <tr><td>19</td><td class="comp-name">Facepile</td><td class="comp-file">app/components/Facepile.tsx</td><td class="comp-exports">Facepile</td><td class="comp-lines">119<span class="comp-lines-bar" style="width:24px"></span></td></tr>
+      <tr><td>20</td><td class="comp-name">FullscreenLoading</td><td class="comp-file">app/components/FullscreenLoading.tsx</td><td class="comp-exports">FullscreenLoading</td><td class="comp-lines">22<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>21</td><td class="comp-name">GroupAvatar</td><td class="comp-file">app/components/Avatar/GroupAvatar.tsx</td><td class="comp-exports">GroupAvatar</td><td class="comp-lines">35<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>22</td><td class="comp-name">Highlight</td><td class="comp-file">app/components/Highlight.tsx</td><td class="comp-exports">Highlight</td><td class="comp-lines">52<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>23</td><td class="comp-name">Initials</td><td class="comp-file">app/components/Avatar/Initials.tsx</td><td class="comp-exports">Initials</td><td class="comp-lines">32<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>24</td><td class="comp-name">Input</td><td class="comp-file">app/components/Input.tsx</td><td class="comp-exports">Input, LabelText, Outline</td><td class="comp-lines">280<span class="comp-lines-bar" style="width:56px"></span></td></tr>
+      <tr><td>25</td><td class="comp-name">InputColor</td><td class="comp-file">app/components/InputColor.tsx</td><td class="comp-exports">InputColor</td><td class="comp-lines">42<span class="comp-lines-bar" style="width:8px"></span></td></tr>
+      <tr><td>26</td><td class="comp-name">InputMemberPermissionSelect</td><td class="comp-file">app/components/InputMemberPermissionSelect.tsx</td><td class="comp-exports">InputMemberPermissionSelect</td><td class="comp-lines">51<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>27</td><td class="comp-name">InputSearch</td><td class="comp-file">app/components/InputSearch.tsx</td><td class="comp-exports">InputSearch</td><td class="comp-lines">68<span class="comp-lines-bar" style="width:14px"></span></td></tr>
+      <tr><td>28</td><td class="comp-name">InputSearchPage</td><td class="comp-file">app/components/InputSearchPage.tsx</td><td class="comp-exports">InputSearchPage</td><td class="comp-lines">112<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <tr><td>29</td><td class="comp-name">InputSelect</td><td class="comp-file">app/components/InputSelect.tsx</td><td class="comp-exports">InputSelect</td><td class="comp-lines">391<span class="comp-lines-bar" style="width:78px"></span></td></tr>
+      <tr><td>30</td><td class="comp-name">InputSelectPermission</td><td class="comp-file">app/components/InputSelectPermission.tsx</td><td class="comp-exports">InputSelectPermission</td><td class="comp-lines">64<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>31</td><td class="comp-name">NavLink</td><td class="comp-file">app/components/NavLink.tsx</td><td class="comp-exports">NavLink</td><td class="comp-lines">45<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>32</td><td class="comp-name">NotificationBadge</td><td class="comp-file">app/components/NotificationBadge.tsx</td><td class="comp-exports">NotificationBadge</td><td class="comp-lines">47<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>33</td><td class="comp-name">OneTimePasswordInput</td><td class="comp-file">app/components/OneTimePasswordInput.tsx</td><td class="comp-exports">OneTimePasswordInput</td><td class="comp-lines">59<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>34</td><td class="comp-name">Scrollable</td><td class="comp-file">app/components/Scrollable.tsx</td><td class="comp-exports">Scrollable</td><td class="comp-lines">170<span class="comp-lines-bar" style="width:34px"></span></td></tr>
+      <tr><td>35</td><td class="comp-name">Star</td><td class="comp-file">app/components/Star.tsx</td><td class="comp-exports">Star</td><td class="comp-lines">95<span class="comp-lines-bar" style="width:19px"></span></td></tr>
+      <tr><td>36</td><td class="comp-name">Switch</td><td class="comp-file">app/components/Switch.tsx</td><td class="comp-exports">Switch</td><td class="comp-lines">177<span class="comp-lines-bar" style="width:35px"></span></td></tr>
+      <tr><td>37</td><td class="comp-name">Tab</td><td class="comp-file">app/components/Tab.tsx</td><td class="comp-exports">Tab</td><td class="comp-lines">160<span class="comp-lines-bar" style="width:32px"></span></td></tr>
+      <tr><td>38</td><td class="comp-name">Tabs</td><td class="comp-file">app/components/Tabs.tsx</td><td class="comp-exports">Tabs</td><td class="comp-lines">97<span class="comp-lines-bar" style="width:19px"></span></td></tr>
+      <tr><td>39</td><td class="comp-name">Tooltip</td><td class="comp-file">app/components/Tooltip.tsx</td><td class="comp-exports">Tooltip</td><td class="comp-lines">288<span class="comp-lines-bar" style="width:58px"></span></td></tr>
+      <tr><td>40</td><td class="comp-name">ArrowKeyNavigation</td><td class="comp-file">app/components/ArrowKeyNavigation.tsx</td><td class="comp-exports">ArrowKeyNavigation</td><td class="comp-lines">51<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>41</td><td class="comp-name">DefaultCollectionInputSelect</td><td class="comp-file">app/components/DefaultCollectionInputSelect.tsx</td><td class="comp-exports">DefaultCollectionInputSelect</td><td class="comp-lines">130<span class="comp-lines-bar" style="width:26px"></span></td></tr>
+      <!-- Primitives (low-level Radix wrappers used as molecules) -->
+      <tr><td>42</td><td class="comp-name">Drawer</td><td class="comp-file">app/components/primitives/Drawer.tsx</td><td class="comp-exports">Drawer, DrawerTrigger, …</td><td class="comp-lines">108<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <tr><td>43</td><td class="comp-name">Popover</td><td class="comp-file">app/components/primitives/Popover.tsx</td><td class="comp-exports">Popover, PopoverTrigger, …</td><td class="comp-lines">136<span class="comp-lines-bar" style="width:27px"></span></td></tr>
+      <tr><td>44</td><td class="comp-name">Menu (primitive)</td><td class="comp-file">app/components/primitives/Menu/index.tsx</td><td class="comp-exports">Menu exports</td><td class="comp-lines">435<span class="comp-lines-bar" style="width:87px"></span></td></tr>
+      <tr><td>45</td><td class="comp-name">Form</td><td class="comp-file">app/components/primitives/Form.tsx</td><td class="comp-exports">Form</td><td class="comp-lines">19<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>46</td><td class="comp-name">HStack</td><td class="comp-file">app/components/primitives/HStack.tsx</td><td class="comp-exports">HStack</td><td class="comp-lines">30<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>47</td><td class="comp-name">VStack</td><td class="comp-file">app/components/primitives/VStack.tsx</td><td class="comp-exports">VStack</td><td class="comp-lines">31<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <!-- List components -->
+      <tr><td>48</td><td class="comp-name">List</td><td class="comp-file">app/components/List/List.ts</td><td class="comp-exports">List</td><td class="comp-lines">9<span class="comp-lines-bar" style="width:2px"></span></td></tr>
+      <tr><td>49</td><td class="comp-name">List.Item</td><td class="comp-file">app/components/List/Item.tsx</td><td class="comp-exports">Item</td><td class="comp-lines">244<span class="comp-lines-bar" style="width:49px"></span></td></tr>
+      <tr><td>50</td><td class="comp-name">List.Error</td><td class="comp-file">app/components/List/Error.tsx</td><td class="comp-exports">LoadingError</td><td class="comp-lines">53<span class="comp-lines-bar" style="width:11px"></span></td></tr>
+      <tr><td>51</td><td class="comp-name">List.Placeholder</td><td class="comp-file">app/components/List/Placeholder.tsx</td><td class="comp-exports">Placeholder</td><td class="comp-lines">30<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <!-- Reactions -->
+      <tr><td>52</td><td class="comp-name">Reaction</td><td class="comp-file">app/components/Reactions/Reaction.tsx</td><td class="comp-exports">Reaction</td><td class="comp-lines">192<span class="comp-lines-bar" style="width:38px"></span></td></tr>
+      <tr><td>53</td><td class="comp-name">ReactionList</td><td class="comp-file">app/components/Reactions/ReactionList.tsx</td><td class="comp-exports">ReactionList</td><td class="comp-lines">87<span class="comp-lines-bar" style="width:17px"></span></td></tr>
+      <tr><td>54</td><td class="comp-name">ReactionPicker</td><td class="comp-file">app/components/Reactions/ReactionPicker.tsx</td><td class="comp-exports">ReactionPicker</td><td class="comp-lines">111<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <!-- Sidebar atoms that compose into molecules -->
+      <tr><td>55</td><td class="comp-name">Disclosure</td><td class="comp-file">app/components/Sidebar/components/Disclosure.tsx</td><td class="comp-exports">Disclosure</td><td class="comp-lines">35<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>56</td><td class="comp-name">DragPlaceholder</td><td class="comp-file">app/components/Sidebar/components/DragPlaceholder.tsx</td><td class="comp-exports">DragPlaceholder</td><td class="comp-lines">30<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>57</td><td class="comp-name">DropCursor</td><td class="comp-file">app/components/Sidebar/components/DropCursor.tsx</td><td class="comp-exports">DropCursor</td><td class="comp-lines">29<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>58</td><td class="comp-name">Folder</td><td class="comp-file">app/components/Sidebar/components/Folder.tsx</td><td class="comp-exports">Folder</td><td class="comp-lines">27<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>59</td><td class="comp-name">SidebarButton</td><td class="comp-file">app/components/Sidebar/components/SidebarButton.tsx</td><td class="comp-exports">SidebarButton</td><td class="comp-lines">50<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>60</td><td class="comp-name">ToggleButton</td><td class="comp-file">app/components/Sidebar/components/ToggleButton.tsx</td><td class="comp-exports">ToggleButton</td><td class="comp-lines">27<span class="comp-lines-bar" style="width:5px"></span></td></tr>
+      <tr><td>61</td><td class="comp-name">Version</td><td class="comp-file">app/components/Sidebar/components/Version.tsx</td><td class="comp-exports">Version</td><td class="comp-lines">20<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>62</td><td class="comp-name">HistoryNavigation</td><td class="comp-file">app/components/Sidebar/components/HistoryNavigation.tsx</td><td class="comp-exports">HistoryNavigation</td><td class="comp-lines">36<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════
+     ORGANISMS
+     ════════════════════════════════════════ -->
+<div class="tier" data-tier="organism">
+  <div class="tier-header">
+    <span class="tier-title">Organisms</span>
+    <span class="tier-count">78</span>
+    <span class="tier-desc">Complex composites — navbars, modals, sidebars, data displays, sharing panels</span>
+  </div>
+  <table class="comp-table">
+    <thead><tr><th>#</th><th>Component</th><th>File</th><th>Exports</th><th style="text-align:right">Lines</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="comp-name">CommandBar</td><td class="comp-file">app/components/CommandBar/CommandBar.tsx</td><td class="comp-exports">CommandBar</td><td class="comp-lines">112<span class="comp-lines-bar" style="width:22px"></span></td></tr>
+      <tr><td>2</td><td class="comp-name">CommandBarItem</td><td class="comp-file">app/components/CommandBar/CommandBarItem.tsx</td><td class="comp-exports">CommandBarItem</td><td class="comp-lines">139<span class="comp-lines-bar" style="width:28px"></span></td></tr>
+      <tr><td>3</td><td class="comp-name">ConfirmationDialog</td><td class="comp-file">app/components/ConfirmationDialog.tsx</td><td class="comp-exports">ConfirmationDialog</td><td class="comp-lines">75<span class="comp-lines-bar" style="width:15px"></span></td></tr>
+      <tr><td>4</td><td class="comp-name">ConfirmMoveDialog</td><td class="comp-file">app/components/ConfirmMoveDialog.tsx</td><td class="comp-exports">ConfirmMoveDialog</td><td class="comp-lines">83<span class="comp-lines-bar" style="width:17px"></span></td></tr>
+      <tr><td>5</td><td class="comp-name">CollectionDeleteDialog</td><td class="comp-file">app/components/CollectionDeleteDialog.tsx</td><td class="comp-exports">CollectionDeleteDialog</td><td class="comp-lines">72<span class="comp-lines-bar" style="width:14px"></span></td></tr>
+      <tr><td>6</td><td class="comp-name">CollectionForm</td><td class="comp-file">app/components/Collection/CollectionForm.tsx</td><td class="comp-exports">CollectionForm</td><td class="comp-lines">254<span class="comp-lines-bar" style="width:51px"></span></td></tr>
+      <tr><td>7</td><td class="comp-name">CommentDeleteDialog</td><td class="comp-file">app/components/CommentDeleteDialog.tsx</td><td class="comp-exports">CommentDeleteDialog</td><td class="comp-lines">51<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>8</td><td class="comp-name">ContextMenu</td><td class="comp-file">app/components/Menu/ContextMenu.tsx</td><td class="comp-exports">ContextMenu</td><td class="comp-lines">87<span class="comp-lines-bar" style="width:17px"></span></td></tr>
+      <tr><td>9</td><td class="comp-name">Dialogs</td><td class="comp-file">app/components/Dialogs.tsx</td><td class="comp-exports">Dialogs</td><td class="comp-lines">45<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>10</td><td class="comp-name">DocumentCard</td><td class="comp-file">app/components/DocumentCard.tsx</td><td class="comp-exports">DocumentCard</td><td class="comp-lines">336<span class="comp-lines-bar" style="width:67px"></span></td></tr>
+      <tr><td>11</td><td class="comp-name">DocumentCopy</td><td class="comp-file">app/components/DocumentExplorer/DocumentCopy.tsx</td><td class="comp-exports">DocumentCopy</td><td class="comp-lines">130<span class="comp-lines-bar" style="width:26px"></span></td></tr>
+      <tr><td>12</td><td class="comp-name">DocumentDownload</td><td class="comp-file">app/components/DocumentDownload.tsx</td><td class="comp-exports">DocumentDownload</td><td class="comp-lines">185<span class="comp-lines-bar" style="width:37px"></span></td></tr>
+      <tr><td>13</td><td class="comp-name">DocumentExplorer</td><td class="comp-file">app/components/DocumentExplorer/DocumentExplorer.tsx</td><td class="comp-exports">DocumentExplorer</td><td class="comp-lines">467<span class="comp-lines-bar" style="width:93px"></span></td></tr>
+      <tr><td>14</td><td class="comp-name">DocumentListItem</td><td class="comp-file">app/components/DocumentListItem.tsx</td><td class="comp-exports">DocumentListItem</td><td class="comp-lines">322<span class="comp-lines-bar" style="width:64px"></span></td></tr>
+      <tr><td>15</td><td class="comp-name">DocumentMeta</td><td class="comp-file">app/components/DocumentMeta.tsx</td><td class="comp-exports">DocumentMeta</td><td class="comp-lines">238<span class="comp-lines-bar" style="width:48px"></span></td></tr>
+      <tr><td>16</td><td class="comp-name">DocumentMove</td><td class="comp-file">app/components/DocumentExplorer/DocumentMove.tsx</td><td class="comp-exports">DocumentMove</td><td class="comp-lines">103<span class="comp-lines-bar" style="width:21px"></span></td></tr>
+      <tr><td>17</td><td class="comp-name">DocumentTasks</td><td class="comp-file">app/components/DocumentTasks.tsx</td><td class="comp-exports">DocumentTasks</td><td class="comp-lines">66<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>18</td><td class="comp-name">DocumentViews</td><td class="comp-file">app/components/DocumentViews.tsx</td><td class="comp-exports">DocumentViews</td><td class="comp-lines">100<span class="comp-lines-bar" style="width:20px"></span></td></tr>
+      <tr><td>19</td><td class="comp-name">DropdownMenu</td><td class="comp-file">app/components/Menu/DropdownMenu.tsx</td><td class="comp-exports">DropdownMenu</td><td class="comp-lines">224<span class="comp-lines-bar" style="width:45px"></span></td></tr>
+      <tr><td>20</td><td class="comp-name">Editor</td><td class="comp-file">app/components/Editor.tsx</td><td class="comp-exports">Editor</td><td class="comp-lines">315<span class="comp-lines-bar" style="width:63px"></span></td></tr>
+      <tr><td>21</td><td class="comp-name">EmojiCreateDialog</td><td class="comp-file">app/components/EmojiCreateDialog.tsx</td><td class="comp-exports">EmojiCreateDialog</td><td class="comp-lines">233<span class="comp-lines-bar" style="width:47px"></span></td></tr>
+      <tr><td>22</td><td class="comp-name">EventListItem</td><td class="comp-file">app/components/EventListItem.tsx</td><td class="comp-exports">EventListItem</td><td class="comp-lines">174<span class="comp-lines-bar" style="width:35px"></span></td></tr>
+      <tr><td>23</td><td class="comp-name">ExportDialog</td><td class="comp-file">app/components/ExportDialog.tsx</td><td class="comp-exports">ExportDialog</td><td class="comp-lines">212<span class="comp-lines-bar" style="width:42px"></span></td></tr>
+      <tr><td>24</td><td class="comp-name">FilterOptions</td><td class="comp-file">app/components/FilterOptions.tsx</td><td class="comp-exports">FilterOptions</td><td class="comp-lines">279<span class="comp-lines-bar" style="width:56px"></span></td></tr>
+      <tr><td>25</td><td class="comp-name">Guide</td><td class="comp-file">app/components/Guide.tsx</td><td class="comp-exports">Guide</td><td class="comp-lines">99<span class="comp-lines-bar" style="width:20px"></span></td></tr>
+      <tr><td>26</td><td class="comp-name">Header</td><td class="comp-file">app/components/Header.tsx</td><td class="comp-exports">Header</td><td class="comp-lines">218<span class="comp-lines-bar" style="width:44px"></span></td></tr>
+      <tr><td>27</td><td class="comp-name">HoverPreview</td><td class="comp-file">app/components/HoverPreview/HoverPreview.tsx</td><td class="comp-exports">HoverPreview</td><td class="comp-lines">356<span class="comp-lines-bar" style="width:71px"></span></td></tr>
+      <tr><td>28</td><td class="comp-name">HoverPreviewDocument</td><td class="comp-file">app/components/HoverPreview/HoverPreviewDocument.tsx</td><td class="comp-exports">HoverPreviewDocument</td><td class="comp-lines">49<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>29</td><td class="comp-name">HoverPreviewGroup</td><td class="comp-file">app/components/HoverPreview/HoverPreviewGroup.tsx</td><td class="comp-exports">HoverPreviewGroup</td><td class="comp-lines">70<span class="comp-lines-bar" style="width:14px"></span></td></tr>
+      <tr><td>30</td><td class="comp-name">HoverPreviewIssue</td><td class="comp-file">app/components/HoverPreview/HoverPreviewIssue.tsx</td><td class="comp-exports">HoverPreviewIssue</td><td class="comp-lines">97<span class="comp-lines-bar" style="width:19px"></span></td></tr>
+      <tr><td>31</td><td class="comp-name">HoverPreviewLink</td><td class="comp-file">app/components/HoverPreview/HoverPreviewLink.tsx</td><td class="comp-exports">HoverPreviewLink</td><td class="comp-lines">44<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>32</td><td class="comp-name">HoverPreviewMention</td><td class="comp-file">app/components/HoverPreview/HoverPreviewMention.tsx</td><td class="comp-exports">HoverPreviewMention</td><td class="comp-lines">37<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>33</td><td class="comp-name">HoverPreviewProject</td><td class="comp-file">app/components/HoverPreview/HoverPreviewProject.tsx</td><td class="comp-exports">HoverPreviewProject</td><td class="comp-lines">148<span class="comp-lines-bar" style="width:30px"></span></td></tr>
+      <tr><td>34</td><td class="comp-name">HoverPreviewPullRequest</td><td class="comp-file">app/components/HoverPreview/HoverPreviewPullRequest.tsx</td><td class="comp-exports">HoverPreviewPullRequest</td><td class="comp-lines">78<span class="comp-lines-bar" style="width:16px"></span></td></tr>
+      <tr><td>35</td><td class="comp-name">IconPicker</td><td class="comp-file">app/components/IconPicker/index.tsx</td><td class="comp-exports">IconPicker</td><td class="comp-lines">346<span class="comp-lines-bar" style="width:69px"></span></td></tr>
+      <tr><td>36</td><td class="comp-name">Lightbox</td><td class="comp-file">app/components/Lightbox.tsx</td><td class="comp-exports">Lightbox</td><td class="comp-lines">1198<span class="comp-lines-bar" style="width:120px"></span></td></tr>
+      <tr><td>37</td><td class="comp-name">Modal</td><td class="comp-file">app/components/Modal.tsx</td><td class="comp-exports">Modal</td><td class="comp-lines">255<span class="comp-lines-bar" style="width:51px"></span></td></tr>
+      <tr><td>38</td><td class="comp-name">Notifications</td><td class="comp-file">app/components/Notifications/Notifications.tsx</td><td class="comp-exports">Notifications</td><td class="comp-lines">217<span class="comp-lines-bar" style="width:43px"></span></td></tr>
+      <tr><td>39</td><td class="comp-name">NotificationsPopover</td><td class="comp-file">app/components/Notifications/NotificationsPopover.tsx</td><td class="comp-exports">NotificationsPopover</td><td class="comp-lines">65<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>40</td><td class="comp-name">NotificationListItem</td><td class="comp-file">app/components/Notifications/NotificationListItem.tsx</td><td class="comp-exports">NotificationListItem</td><td class="comp-lines">131<span class="comp-lines-bar" style="width:26px"></span></td></tr>
+      <tr><td>41</td><td class="comp-name">OAuthClientForm</td><td class="comp-file">app/components/OAuthClient/OAuthClientForm.tsx</td><td class="comp-exports">OAuthClientForm</td><td class="comp-lines">167<span class="comp-lines-bar" style="width:33px"></span></td></tr>
+      <tr><td>42</td><td class="comp-name">PaginatedDocumentList</td><td class="comp-file">app/components/PaginatedDocumentList.tsx</td><td class="comp-exports">PaginatedDocumentList</td><td class="comp-lines">60<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>43</td><td class="comp-name">PaginatedEventList</td><td class="comp-file">app/components/PaginatedEventList.tsx</td><td class="comp-exports">PaginatedEventList</td><td class="comp-lines">81<span class="comp-lines-bar" style="width:16px"></span></td></tr>
+      <tr><td>44</td><td class="comp-name">PaginatedList</td><td class="comp-file">app/components/PaginatedList.tsx</td><td class="comp-exports">PaginatedList</td><td class="comp-lines">339<span class="comp-lines-bar" style="width:68px"></span></td></tr>
+      <tr><td>45</td><td class="comp-name">PinnedDocuments</td><td class="comp-file">app/components/PinnedDocuments.tsx</td><td class="comp-exports">PinnedDocuments</td><td class="comp-lines">176<span class="comp-lines-bar" style="width:35px"></span></td></tr>
+      <tr><td>46</td><td class="comp-name">RevisionListItem</td><td class="comp-file">app/components/RevisionListItem.tsx</td><td class="comp-exports">RevisionListItem</td><td class="comp-lines">206<span class="comp-lines-bar" style="width:41px"></span></td></tr>
+      <tr><td>47</td><td class="comp-name">SearchListItem</td><td class="comp-file">app/components/SearchListItem.tsx</td><td class="comp-exports">SearchListItem</td><td class="comp-lines">167<span class="comp-lines-bar" style="width:33px"></span></td></tr>
+      <tr><td>48</td><td class="comp-name">SearchPopover</td><td class="comp-file">app/components/SearchPopover.tsx</td><td class="comp-exports">SearchPopover</td><td class="comp-lines">289<span class="comp-lines-bar" style="width:58px"></span></td></tr>
+      <tr><td>49</td><td class="comp-name">SortableTable</td><td class="comp-file">app/components/SortableTable.tsx</td><td class="comp-exports">SortableTable</td><td class="comp-lines">31<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>50</td><td class="comp-name">Table</td><td class="comp-file">app/components/Table.tsx</td><td class="comp-exports">Table</td><td class="comp-lines">425<span class="comp-lines-bar" style="width:85px"></span></td></tr>
+      <tr><td>51</td><td class="comp-name">TemplatizeDialog</td><td class="comp-file">app/components/TemplatizeDialog/index.tsx</td><td class="comp-exports">DocumentTemplatizeDialog</td><td class="comp-lines">76<span class="comp-lines-bar" style="width:15px"></span></td></tr>
+      <tr><td>52</td><td class="comp-name">ViewReactionsDialog</td><td class="comp-file">app/components/Reactions/ViewReactionsDialog.tsx</td><td class="comp-exports">ViewReactionsDialog</td><td class="comp-lines">164<span class="comp-lines-bar" style="width:33px"></span></td></tr>
+      <!-- Sharing system -->
+      <tr><td>53</td><td class="comp-name">SharePopover (Doc)</td><td class="comp-file">app/components/Sharing/Document/SharePopover.tsx</td><td class="comp-exports">SharePopover</td><td class="comp-lines">387<span class="comp-lines-bar" style="width:77px"></span></td></tr>
+      <tr><td>54</td><td class="comp-name">SharePopover (Coll)</td><td class="comp-file">app/components/Sharing/Collection/SharePopover.tsx</td><td class="comp-exports">SharePopover</td><td class="comp-lines">377<span class="comp-lines-bar" style="width:75px"></span></td></tr>
+      <tr><td>55</td><td class="comp-name">AccessControlList (Doc)</td><td class="comp-file">app/components/Sharing/Document/AccessControlList.tsx</td><td class="comp-exports">AccessControlList</td><td class="comp-lines">304<span class="comp-lines-bar" style="width:61px"></span></td></tr>
+      <tr><td>56</td><td class="comp-name">AccessControlList (Coll)</td><td class="comp-file">app/components/Sharing/Collection/AccessControlList.tsx</td><td class="comp-exports">AccessControlList</td><td class="comp-lines">315<span class="comp-lines-bar" style="width:63px"></span></td></tr>
+      <tr><td>57</td><td class="comp-name">PublicAccess (Doc)</td><td class="comp-file">app/components/Sharing/Document/PublicAccess.tsx</td><td class="comp-exports">PublicAccess</td><td class="comp-lines">332<span class="comp-lines-bar" style="width:66px"></span></td></tr>
+      <tr><td>58</td><td class="comp-name">PublicAccess (Coll)</td><td class="comp-file">app/components/Sharing/Collection/PublicAccess.tsx</td><td class="comp-exports">PublicAccess</td><td class="comp-lines">278<span class="comp-lines-bar" style="width:56px"></span></td></tr>
+      <!-- Sidebar organisms -->
+      <tr><td>59</td><td class="comp-name">Sidebar</td><td class="comp-file">app/components/Sidebar/Sidebar.tsx</td><td class="comp-exports">Sidebar</td><td class="comp-lines">396<span class="comp-lines-bar" style="width:79px"></span></td></tr>
+      <tr><td>60</td><td class="comp-name">AppSidebar</td><td class="comp-file">app/components/Sidebar/App.tsx</td><td class="comp-exports">AppSidebar</td><td class="comp-lines">145<span class="comp-lines-bar" style="width:29px"></span></td></tr>
+      <tr><td>61</td><td class="comp-name">SettingsSidebar</td><td class="comp-file">app/components/Sidebar/Settings.tsx</td><td class="comp-exports">SettingsSidebar</td><td class="comp-lines">107<span class="comp-lines-bar" style="width:21px"></span></td></tr>
+      <tr><td>62</td><td class="comp-name">SharedSidebar</td><td class="comp-file">app/components/Sidebar/Shared.tsx</td><td class="comp-exports">SharedSidebar</td><td class="comp-lines">115<span class="comp-lines-bar" style="width:23px"></span></td></tr>
+      <tr><td>63</td><td class="comp-name">RightSidebar</td><td class="comp-file">app/components/Sidebar/Right.tsx</td><td class="comp-exports">RightSidebar</td><td class="comp-lines">151<span class="comp-lines-bar" style="width:30px"></span></td></tr>
+      <tr><td>64</td><td class="comp-name">SidebarLink</td><td class="comp-file">app/components/Sidebar/components/SidebarLink.tsx</td><td class="comp-exports">SidebarLink</td><td class="comp-lines">362<span class="comp-lines-bar" style="width:72px"></span></td></tr>
+      <tr><td>65</td><td class="comp-name">SidebarNavLink</td><td class="comp-file">app/components/Sidebar/components/NavLink.tsx</td><td class="comp-exports">NavLink</td><td class="comp-lines">209<span class="comp-lines-bar" style="width:42px"></span></td></tr>
+      <tr><td>66</td><td class="comp-name">DocumentLink</td><td class="comp-file">app/components/Sidebar/components/DocumentLink.tsx</td><td class="comp-exports">DocumentLink</td><td class="comp-lines">516<span class="comp-lines-bar" style="width:103px"></span></td></tr>
+      <tr><td>67</td><td class="comp-name">CollectionLink</td><td class="comp-file">app/components/Sidebar/components/CollectionLink.tsx</td><td class="comp-exports">CollectionLink</td><td class="comp-lines">224<span class="comp-lines-bar" style="width:45px"></span></td></tr>
+      <tr><td>68</td><td class="comp-name">StarredLink</td><td class="comp-file">app/components/Sidebar/components/StarredLink.tsx</td><td class="comp-exports">StarredLink</td><td class="comp-lines">346<span class="comp-lines-bar" style="width:69px"></span></td></tr>
+      <tr><td>69</td><td class="comp-name">SharedWithMeLink</td><td class="comp-file">app/components/Sidebar/components/SharedWithMeLink.tsx</td><td class="comp-exports">SharedWithMeLink</td><td class="comp-lines">224<span class="comp-lines-bar" style="width:45px"></span></td></tr>
+      <tr><td>70</td><td class="comp-name">SharedDocumentLink</td><td class="comp-file">app/components/Sidebar/components/SharedDocumentLink.tsx</td><td class="comp-exports">SharedDocumentLink</td><td class="comp-lines">173<span class="comp-lines-bar" style="width:35px"></span></td></tr>
+      <tr><td>71</td><td class="comp-name">DropToImport</td><td class="comp-file">app/components/Sidebar/components/DropToImport.tsx</td><td class="comp-exports">DropToImport</td><td class="comp-lines">47<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>72</td><td class="comp-name">SidebarAction</td><td class="comp-file">app/components/Sidebar/components/SidebarAction.tsx</td><td class="comp-exports">SidebarAction</td><td class="comp-lines">62<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <!-- Icon picker sub-components -->
+      <tr><td>73</td><td class="comp-name">EmojiPanel</td><td class="comp-file">app/components/IconPicker/components/EmojiPanel.tsx</td><td class="comp-exports">EmojiPanel</td><td class="comp-lines">302<span class="comp-lines-bar" style="width:60px"></span></td></tr>
+      <tr><td>74</td><td class="comp-name">IconPanel</td><td class="comp-file">app/components/IconPicker/components/IconPanel.tsx</td><td class="comp-exports">IconPanel</td><td class="comp-lines">160<span class="comp-lines-bar" style="width:32px"></span></td></tr>
+      <tr><td>75</td><td class="comp-name">Grid (IconPicker)</td><td class="comp-file">app/components/IconPicker/components/Grid.tsx</td><td class="comp-exports">Grid</td><td class="comp-lines">98<span class="comp-lines-bar" style="width:20px"></span></td></tr>
+      <tr><td>76</td><td class="comp-name">IconColorPicker</td><td class="comp-file">app/components/IconPicker/components/IconColorPicker.tsx</td><td class="comp-exports">IconColorPicker</td><td class="comp-lines">89<span class="comp-lines-bar" style="width:18px"></span></td></tr>
+      <tr><td>77</td><td class="comp-name">SkinTonePicker</td><td class="comp-file">app/components/IconPicker/components/SkinTonePicker.tsx</td><td class="comp-exports">SkinTonePicker</td><td class="comp-lines">62<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>78</td><td class="comp-name">LanguagePrompt</td><td class="comp-file">app/components/LanguagePrompt.tsx</td><td class="comp-exports">LanguagePrompt</td><td class="comp-lines">92<span class="comp-lines-bar" style="width:18px"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════
+     TEMPLATES / PAGES
+     ════════════════════════════════════════ -->
+<div class="tier" data-tier="template">
+  <div class="tier-header">
+    <span class="tier-title">Templates / Pages</span>
+    <span class="tier-count">19</span>
+    <span class="tier-desc">Full page layouts and high-level wrappers — typically too broad for component audit</span>
+  </div>
+  <table class="comp-table">
+    <thead><tr><th>#</th><th>Component</th><th>File</th><th>Exports</th><th style="text-align:right">Lines</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="comp-name">Layout</td><td class="comp-file">app/components/Layout.tsx</td><td class="comp-exports">Layout</td><td class="comp-lines">106<span class="comp-lines-bar" style="width:21px"></span></td></tr>
+      <tr><td>2</td><td class="comp-name">AuthenticatedLayout</td><td class="comp-file">app/components/AuthenticatedLayout.tsx</td><td class="comp-exports">AuthenticatedLayout</td><td class="comp-lines">96<span class="comp-lines-bar" style="width:19px"></span></td></tr>
+      <tr><td>3</td><td class="comp-name">Authenticated</td><td class="comp-file">app/components/Authenticated.tsx</td><td class="comp-exports">Authenticated</td><td class="comp-lines">43<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>4</td><td class="comp-name">Scene</td><td class="comp-file">app/components/Scene.tsx</td><td class="comp-exports">Scene</td><td class="comp-lines">66<span class="comp-lines-bar" style="width:13px"></span></td></tr>
+      <tr><td>5</td><td class="comp-name">Presentation</td><td class="comp-file">app/components/Presentation.tsx</td><td class="comp-exports">Presentation</td><td class="comp-lines">32<span class="comp-lines-bar" style="width:6px"></span></td></tr>
+      <tr><td>6</td><td class="comp-name">Theme</td><td class="comp-file">app/components/Theme.tsx</td><td class="comp-exports">Theme</td><td class="comp-lines">44<span class="comp-lines-bar" style="width:9px"></span></td></tr>
+      <tr><td>7</td><td class="comp-name">ErrorBoundary</td><td class="comp-file">app/components/ErrorBoundary.tsx</td><td class="comp-exports">ErrorBoundary</td><td class="comp-lines">226<span class="comp-lines-bar" style="width:45px"></span></td></tr>
+      <tr><td>8</td><td class="comp-name">WebsocketProvider</td><td class="comp-file">app/components/WebsocketProvider.tsx</td><td class="comp-exports">WebsocketProvider</td><td class="comp-lines">729<span class="comp-lines-bar" style="width:120px"></span></td></tr>
+      <tr><td>9</td><td class="comp-name">Analytics</td><td class="comp-file">app/components/Analytics.tsx</td><td class="comp-exports">Analytics</td><td class="comp-lines">131<span class="comp-lines-bar" style="width:26px"></span></td></tr>
+      <tr><td>10</td><td class="comp-name">DesktopEventHandler</td><td class="comp-file">app/components/DesktopEventHandler.tsx</td><td class="comp-exports">DesktopEventHandler</td><td class="comp-lines">61<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>11</td><td class="comp-name">Toasts</td><td class="comp-file">app/components/Toasts.tsx</td><td class="comp-exports">Toasts</td><td class="comp-lines">58<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>12</td><td class="comp-name">UserDialogs</td><td class="comp-file">app/components/UserDialogs.tsx</td><td class="comp-exports">UserDialogs</td><td class="comp-lines">201<span class="comp-lines-bar" style="width:40px"></span></td></tr>
+      <tr><td>13</td><td class="comp-name">PageTitle</td><td class="comp-file">app/components/PageTitle.tsx</td><td class="comp-exports">PageTitle</td><td class="comp-lines">36<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>14</td><td class="comp-name">PageScroll</td><td class="comp-file">app/components/PageScroll.tsx</td><td class="comp-exports">PageScroll</td><td class="comp-lines">51<span class="comp-lines-bar" style="width:10px"></span></td></tr>
+      <tr><td>15</td><td class="comp-name">PlaceholderDocument</td><td class="comp-file">app/components/PlaceholderDocument.tsx</td><td class="comp-exports">PlaceholderDocument</td><td class="comp-lines">59<span class="comp-lines-bar" style="width:12px"></span></td></tr>
+      <tr><td>16</td><td class="comp-name">DocumentsLoader</td><td class="comp-file">app/components/DocumentsLoader.tsx</td><td class="comp-exports">DocumentsLoader</td><td class="comp-lines">21<span class="comp-lines-bar" style="width:4px"></span></td></tr>
+      <tr><td>17</td><td class="comp-name">CollectionEdit</td><td class="comp-file">app/components/Collection/CollectionEdit.tsx</td><td class="comp-exports">CollectionEdit</td><td class="comp-lines">33<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>18</td><td class="comp-name">CollectionNew</td><td class="comp-file">app/components/Collection/CollectionNew.tsx</td><td class="comp-exports">CollectionNew</td><td class="comp-lines">36<span class="comp-lines-bar" style="width:7px"></span></td></tr>
+      <tr><td>19</td><td class="comp-name">TemplateForm</td><td class="comp-file">app/components/Template/TemplateForm.tsx</td><td class="comp-exports">TemplateForm</td><td class="comp-lines">103<span class="comp-lines-bar" style="width:21px"></span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  Generated by <strong>/code-audit</strong> — Component Discovery (Step 0b) — 2026-03-19<br>
+  Source: <code>C:\Users\gary\Documents\GitHub\outline\app\components\</code>
+</div>
+
+<script>
+  let activeTier = 'all';
+
+  function filterTier(btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTier = btn.dataset.tier;
+    filterTable();
+  }
+
+  function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    let visible = 0;
+    document.querySelectorAll('.tier').forEach(tier => {
+      const tierType = tier.dataset.tier;
+      const tierMatch = activeTier === 'all' || tierType === activeTier;
+      let tierVisible = 0;
+      tier.querySelectorAll('.comp-table tbody tr').forEach(row => {
+        const name = row.querySelector('.comp-name')?.textContent.toLowerCase() || '';
+        const file = row.querySelector('.comp-file')?.textContent.toLowerCase() || '';
+        const match = tierMatch && (q === '' || name.includes(q) || file.includes(q));
+        row.style.display = match ? '' : 'none';
+        if (match) { tierVisible++; visible++; }
+      });
+      tier.style.display = tierMatch && (q === '' || tierVisible > 0) ? '' : 'none';
+    });
+    const countEl = document.getElementById('matchCount');
+    if (q || activeTier !== 'all') {
+      countEl.textContent = visible + ' match' + (visible !== 1 ? 'es' : '');
+    } else {
+      countEl.textContent = '';
+    }
+  }
+</script>
+
+</body>
+</html>

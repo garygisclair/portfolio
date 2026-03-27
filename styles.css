@@ -837,13 +837,39 @@ ul {
   box-shadow: 0 4px 20px rgba(120, 100, 80, 0.08), 0 2px 6px rgba(120, 100, 80, 0.04);
 }
 
-#portfolio .pcard {
-  cursor: default;
+/* Portfolio tab bar */
+.portfolio-tabs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 24px;
 }
-#portfolio .pcard:hover {
-  transform: none;
-  border-color: var(--color-card-border);
-  box-shadow: none;
+
+.portfolio-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #404040;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.portfolio-tab:hover {
+  background: rgba(120, 100, 80, 0.08);
+}
+
+.portfolio-tab--active {
+  background: #171717;
+  color: #fafafa;
+}
+
+.portfolio-tab--active:hover {
+  background: #171717;
 }
 
 .pcard__media {
@@ -865,6 +891,11 @@ ul {
 
 .pcard__media--contain {
   background: #fff;
+  height: 320px;
+}
+
+.pcard__media--contain img {
+  object-fit: cover;
 }
 
 .pcard__media--contain img,
@@ -903,10 +934,6 @@ ul {
   font-weight: 400;
   color: var(--color-text-dim);
   line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .pcard__cta {
@@ -953,7 +980,7 @@ ul {
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-md);
   width: 100%;
-  max-width: 900px;
+  max-width: 824px;
   max-height: 90vh;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -968,7 +995,7 @@ ul {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-pill);
-  background: rgba(0, 0, 0, 0.04);
+  background: #FAFAF5;
   border: 1px solid rgba(0, 0, 0, 0.08);
   color: var(--color-text);
   font-size: 20px;
@@ -993,7 +1020,7 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: left top;
   display: block;
 }
 
@@ -1048,13 +1075,13 @@ ul {
 
 .modal__gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-2);
 }
 
 .modal__gallery-placeholder,
 .modal__gallery-img {
-  height: 300px;
+  height: auto;
   width: 100%;
   min-width: 0;
   background: var(--color-surface-warm);
@@ -1065,9 +1092,7 @@ ul {
 
 .modal__gallery-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
   display: block;
 }
 
@@ -1167,6 +1192,10 @@ ul {
 
   .card__media {
     height: 150px;
+  }
+
+  .pcard__media--contain {
+    height: 288px;
   }
 
   /* Experience: stack vertically */

@@ -71,7 +71,7 @@
       </a>
       <div class="nav__links">
         <a href="#" class="nav__link nav__link--active">Home</a>
-        <a href="portfolio.html" class="nav__link">Portfolio</a>
+        <a href="#portfolio" class="nav__link">Portfolio</a>
         <a href="#experience" class="nav__link">Experience</a>
       </div>
       <div class="nav__actions">
@@ -101,7 +101,7 @@
             <h1 class="hero__heading">UI/UX Product Designer, <br>Design Systems &amp; Data Visualization</h1>
             <p class="hero__bio">I'm a senior product designer with 15 years of experience building data-driven enterprise platforms, analytics dashboards, and scalable design systems for Fortune 500 teams. I specialize in transforming complex datasets into clear, accessible visual interfaces that accelerate stakeholder decision-making. I'm experienced leading cross-functional collaboration with product, engineering, analytics, and AI teams across user research, prototyping, design-to-dev handoff, and production.</p>
             <div class="hero__ctas">
-              <a href="portfolio.html" class="btn btn--solid btn--lg">Examples</a>
+              <a href="#portfolio" class="btn btn--solid btn--lg">Examples</a>
               <a href="#experience" class="btn btn--outline btn--lg">Experience</a>
             </div>
           </div>
@@ -128,59 +128,248 @@
           <h2 class="section-title">Portfolio</h2>
         </header>
 
-        <div class="pcard-grid">
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/northstar-Thumbnail.png" alt="NorthStar — real-time economic and financial indicators dashboard"></div>
+        <div class="portfolio-tabs" role="tablist" aria-label="Portfolio categories">
+          <button class="portfolio-tab portfolio-tab--active" role="tab" aria-selected="true" data-tab="ui-ux">UI / UX</button>
+          <button class="portfolio-tab" role="tab" aria-selected="false" data-tab="live-demos">Live Demos</button>
+
+          <button class="portfolio-tab" role="tab" aria-selected="false" data-tab="branding">Branding</button>
+        </div>
+
+        <div class="pcard-grid" id="portfolio-grid">
+
+          <!-- Live Demos -->
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://northstar-live.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/northstar-Thumbnail.png" alt="NorthStar Live Dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">NorthStar Live</h3>
+              <p class="pcard__desc">Live economic and financial indicators dashboard powered by FRED data, featuring interactive time-series charts and customizable KPI cards.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/northstar/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-northstar.jpg" alt="NorthStar Analytics Dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">NorthStar Analytics Dashboard</h3>
+              <p class="pcard__desc">An experiment in Claude Code and Figma integration — enterprise analytics dashboard with KPI cards, curated reports catalog, and responsive three-panel layout.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/supermega-design-system/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-supermega.jpg" alt="Supermega Design System"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">Supermega Design System</h3>
+              <p class="pcard__desc">Interactive design system with component documentation and a playground template. Built using Claude Code AI.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/company-ai-compare-dashboard/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-ai-dashboard.jpg" alt="AI Leadership Dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">AI Leadership Dashboard</h3>
+              <p class="pcard__desc">Analytics dashboard tracking AI adoption, usage trends, and performance across applications. Prototyped with Claude Code.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/visualization-design-handbook/index.html" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-viz-handbook.jpg" alt="Visualization Design Handbook" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">Visualization Design Handbook</h3>
+              <p class="pcard__desc">Figma design library encoding Tufte and Few principles for data visualization. Created with Claude Code.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/supermega-sitebuilder/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-sitebuilder.jpg" alt="SuperMega Sitebuilder" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">SuperMega Sitebuilder</h3>
+              <p class="pcard__desc">AI-powered page builder prototype with scripted chat demo and animated block assembly. Built entirely with Claude Code.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/experiement-ai-compare/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/thumb-ai-compare.jpg" alt="AI Compare Experiment" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">AI Compare Experiment</h3>
+              <p class="pcard__desc">Data visualization dashboard comparing AI tool adoption, usage trends, and engagement metrics. A Claude Code and Figma Make experiment.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="demos/code-audit/inventory.html" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/code-audit-skill/page-01.jpg" alt="Code Audit Skill — Outline inventory" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">Code Audit: Outline (199 Components)</h3>
+              <p class="pcard__desc">Auto-discovered component inventory from the Outline codebase — 199 components classified by atomic design tier. Generated by a Claude Code AI skill.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <a class="pcard pcard--link" data-tab="live-demos" href="demos/code-audit/buttons.html" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/code-audit-skill/page-02.jpg" alt="Code Audit Skill — Outline Button reference" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">Code Audit: Outline Button</h3>
+              <p class="pcard__desc">Auto-generated component reference page for the Outline Button — every variant rendered with token documentation. Generated by a Claude Code skill.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
+          <!-- UI / UX -->
+          <article class="pcard" data-tab="ui-ux" data-id="code-audit-skill" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/code-audit-skill/page-01-824w.jpg" alt="Code Audit Skill" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Developer Tool</span>
+              <h3 class="pcard__title">Claude Skill: Code Audit</h3>
+              <p class="pcard__desc">Claude Code skill that auto-discovers every UI component in a codebase and generates interactive inventories with designer-facing reference pages.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="ui-ux" data-id="figma-audit-skill" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/figma-audit-skill/page-01-824w.jpg" alt="Figma Audit Skill" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Developer Tool</span>
+              <h3 class="pcard__title">Claude Skill: Figma Audit</h3>
+              <p class="pcard__desc">Claude Code skill that crawls Figma component libraries and generates developer-facing reference pages with complete token manifests.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="ui-ux" data-id="northstar" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/northstar/page-01-824w.jpg" alt="NorthStar Analytics Dashboard" style="object-position: left top;"></div>
             <div class="pcard__body">
               <span class="tag pcard__category">Dashboard</span>
-              <h3 class="pcard__title">NorthStar</h3>
-              <p class="pcard__desc">Live economic and financial indicators dashboard powered by FRED data, featuring interactive time-series charts and customizable KPI cards.</p>
+              <h3 class="pcard__title">NorthStar Analytics Dashboard</h3>
+              <p class="pcard__desc">An experiment in Claude Code and Figma integration — enterprise analytics dashboard with KPI cards, curated reports catalog, and responsive three-panel layout.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
             </div>
           </article>
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/innersourcing.png" alt="QuickStrike campaign creation tool" style="object-position: left top;"></div>
+
+          <article class="pcard" data-tab="ui-ux" data-id="ai-academy" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/ai-academy/page-01-824w.jpg" alt="AI Academy dashboard" style="object-position: left top;"></div>
             <div class="pcard__body">
-              <span class="tag pcard__category">App / UX</span>
-              <h3 class="pcard__title">QuickStrike</h3>
-              <p class="pcard__desc">Rapid campaign creation tool enabling internal analysts to view and find insights with minimal friction.</p>
+              <span class="tag pcard__category">Dashboard</span>
+              <h3 class="pcard__title">AI Academy</h3>
+              <p class="pcard__desc">Internal learning platform dashboard tracking AI literacy progress across a global workforce.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
             </div>
           </article>
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/hero-demo-designsystem.png" alt="Supermega Design System — component documentation and usage guidelines"></div>
-            <div class="pcard__body">
-              <span class="tag pcard__category">Design System</span>
-              <h3 class="pcard__title">Supermega Design System</h3>
-              <p class="pcard__desc">Interactive design system with component documentation and usage guidelines.</p>
-            </div>
-          </article>
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/fit-Thumbnail.png" alt="Finance Innovation Transformation brand"></div>
-            <div class="pcard__body">
-              <span class="tag pcard__category">Branding</span>
-              <h3 class="pcard__title">Finance Innovation &amp; Transformation</h3>
-              <p class="pcard__desc">Logo and brand identity for an internal Finance Innovation and Transformation program.</p>
-            </div>
-          </article>
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/aRest-Thumbnail.png" alt="aRest logo — API report scheduling tool"></div>
+
+          <article class="pcard" data-tab="ui-ux" data-id="arest" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/arest/page-02-824w.jpg" alt="aRest API testing tool" style="object-position: left top;"></div>
             <div class="pcard__body">
               <span class="tag pcard__category">App / UX</span>
               <h3 class="pcard__title">aRest</h3>
               <p class="pcard__desc">REST API testing tool with a streamlined UI designed for developer productivity and workflow efficiency.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
             </div>
           </article>
-          <article class="pcard">
-            <div class="pcard__media"><img src="images/map-Thumbnail.png" alt="Marketplaces Analytics Program — Elevating Analytics"></div>
+
+          <article class="pcard" data-tab="ui-ux" data-id="consumer-insights-dashboard" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/consumer-insights-dashboard/page-01-824w.jpg" alt="Consumer Insights Dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h3 class="pcard__title">Consumer Insights Dashboard</h3>
+              <p class="pcard__desc">Bootstrap-based dashboard surfacing consumer behavior analytics to support product and marketing decisions.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="ui-ux" data-id="quickstrike" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/quickstrike/page-02-824w.jpg" alt="QuickStrike campaign creation tool" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">App / UX</span>
+              <h3 class="pcard__title">QuickStrike</h3>
+              <p class="pcard__desc">Rapid campaign creation tool enabling internal analysts to view and find insights with minimal friction.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="ui-ux" data-id="gro-trending" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/gro-trending/page-01-824w.jpg" alt="GRO Trending revenue dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h3 class="pcard__title">GRO Trending</h3>
+              <p class="pcard__desc">Gross revenue optimization trend analysis and reporting tool for finance and analytics teams.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="ui-ux" data-id="third-party-dashboard" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/third-party-dashboard/page-01-824w.jpg" alt="Third Party vendor analytics dashboard" style="object-position: left top;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Dashboard</span>
+              <h3 class="pcard__title">Third Party Onboarding Dashboard</h3>
+              <p class="pcard__desc">Vendor onboarding platform with pipeline tracking, intake workflows, and real-time visibility into third-party integration status.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Branding -->
+          <article class="pcard" data-tab="branding" data-id="finance-coe-branding" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media pcard__media--contain"><img src="images/finance-coe-branding/page-01.jpg" alt="Finance COE brand identity"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h3 class="pcard__title">Finance COE Branding</h3>
+              <p class="pcard__desc">Visual identity system and brand guidelines for a Finance Center of Excellence team.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="branding" data-id="finance-innovation-transformation" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media pcard__media--contain"><img src="images/fit-Thumbnail.png" alt="Finance Innovation and Transformation logo"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h3 class="pcard__title">Finance Innovation &amp; Transformation</h3>
+              <p class="pcard__desc">Logo and brand identity for an internal Finance Innovation and Transformation program.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="branding" data-id="arest-logo" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media pcard__media--contain"><img src="images/aRest-Thumbnail.png" alt="aRest logo"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h3 class="pcard__title">aRest Logo</h3>
+              <p class="pcard__desc">Logo and brand identity for aRest, an internal REST API testing and documentation tool.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
+          <article class="pcard" data-tab="branding" data-id="map-logo" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media pcard__media--contain"><img src="images/map-Thumbnail.png" alt="Marketplaces Analytics Program logo"></div>
             <div class="pcard__body">
               <span class="tag pcard__category">Branding</span>
               <h3 class="pcard__title">Marketplaces Analytics Program</h3>
               <p class="pcard__desc">Visual identity for an internal Marketplaces Analytics Program — Elevating Analytics.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
             </div>
           </article>
-        </div>
 
-        <div class="portfolio-footer">
-          <a href="portfolio.html" class="btn btn--outline btn--lg">View All Work</a>
+          <article class="pcard" data-tab="branding" data-id="ux-central-logo" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media pcard__media--contain"><img src="images/ux-central-logo/page-01.jpg" alt="UX Central logo design"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Branding</span>
+              <h3 class="pcard__title">UX Central Logo</h3>
+              <p class="pcard__desc">Brand identity and logo design for a centralized UX design system and shared component library.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
         </div>
 
       </div>
@@ -361,6 +550,240 @@
     </div>
   </footer>
 
+
+  <!-- ================================================
+       PROJECT DETAIL MODAL
+       ================================================ -->
+  <div class="modal-overlay" id="modal-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modal-close" aria-label="Close project detail">&#x2715;</button>
+      <div class="modal__hero" id="modal-hero" aria-hidden="true"><img id="modal-hero-img" src="" alt="" hidden></div>
+      <div class="modal__content">
+        <div class="modal__meta">
+          <span class="tag" id="modal-category"></span>
+        </div>
+        <h2 class="modal__title" id="modal-title"></h2>
+        <hr class="modal__divider">
+        <div class="modal__sections">
+          <div>
+            <p class="modal__section-label">Overview</p>
+            <p class="modal__section-text" id="modal-overview"></p>
+          </div>
+          <div id="modal-gallery-section">
+            <p class="modal__section-label">Gallery</p>
+            <div class="modal__gallery" id="modal-gallery"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  /* ---- Project data ---- */
+  const projects = {
+    'northstar': {
+      title: 'NorthStar Analytics Dashboard',
+      category: 'Dashboard',
+      overview: 'An experiment in Claude Code and Figma integration — enterprise analytics dashboard with a three-panel responsive layout, customizable KPI cards, a curated reports catalog with drag-reorder and group merging, dataset directory with SLA tracking, and a slideshow presentation system. Built with React 19, TypeScript, Tailwind v4, and Radix Themes. Dark mode default.',
+      hero: 'images/northstar/page-01.jpg',
+      galleryColumns: 1,
+      gallery: ['images/northstar/page-02.jpg','images/northstar/page-03.jpg','images/northstar/page-04.jpg','images/northstar/page-05.jpg'],
+    },
+    'ai-academy': {
+      title: 'AI Academy',
+      category: 'Dashboard',
+      overview: 'AI Academy is an internal learning management platform designed to accelerate AI literacy across a global workforce. The dashboard provides employees and managers with real-time visibility into course completion, skill assessments, and personalized learning paths.',
+      hero: 'images/ai-academy/page-01.jpg',
+      gallery: ['images/ai-academy/page-02.jpg','images/ai-academy/page-03.jpg'],
+    },
+    'arest': {
+      title: 'aRest',
+      category: 'App / UX',
+      overview: 'A REST API testing and documentation tool designed to reduce friction in developer workflows. The interface focuses on speed and clarity — allowing engineers to configure, execute, and inspect API calls with minimal overhead.',
+      hero: 'images/arest/page-02.jpg',
+      gallery: ['images/arest/page-01.jpg','images/arest/page-03.jpg'],
+    },
+    'consumer-insights-dashboard': {
+      title: 'Consumer Insights Dashboard',
+      category: 'Dashboard',
+      overview: 'A Bootstrap-based analytics dashboard surfacing consumer behavior data to product managers and marketing strategists. Aggregates purchase patterns, search trends, and engagement metrics into a single view, enabling data-driven decisions without requiring SQL or data engineering support.',
+      hero: 'images/consumer-insights-dashboard/page-01.jpg',
+      gallery: ['images/consumer-insights-dashboard/page-02.jpg','images/consumer-insights-dashboard/page-07.jpg','images/consumer-insights-dashboard/page-04.jpg','images/consumer-insights-dashboard/page-09.jpg'],
+    },
+    'finance-coe-branding': {
+      title: 'Finance COE Branding',
+      category: 'Branding',
+      overview: 'A complete visual identity system for a Finance Center of Excellence, including logo design, color palette, typography guidelines, and branded templates for presentations, reports, and internal communications.',
+      fit: 'contain',
+      hero: 'images/finance-coe-branding/page-02.jpg',
+      galleryColumns: 2,
+      gallery: ['images/finance-coe-branding/page-03.jpg','images/finance-coe-branding/page-04.jpg','images/finance-coe-branding/page-05.jpg','images/finance-coe-branding/page-06.jpg'],
+    },
+    'finance-innovation-transformation': {
+      title: 'Finance Innovation & Transformation',
+      category: 'Branding',
+      overview: 'Logo design and brand identity for an internal Finance Innovation and Transformation program. The identity communicates a forward-thinking, tech-forward culture within the finance organization. Delivered across digital and print touchpoints including decks, badges, and internal portals.',
+      fit: 'contain',
+      hero: 'images/finance-innovation-transformation/page-01.jpg',
+      galleryColumns: 2,
+      gallery: ['images/finance-innovation-transformation/page-02.jpg','images/finance-innovation-transformation/page-03.jpg','images/finance-innovation-transformation/page-04.jpg','images/finance-innovation-transformation/page-05.jpg'],
+    },
+    'gro-trending': {
+      title: 'GRO Trending',
+      category: 'Dashboard',
+      overview: 'A gross revenue optimization trend analysis and reporting tool built for finance and analytics teams. Visualizes revenue drivers, churn indicators, and promotional lift across time periods. Designed to replace static spreadsheet reports with an interactive, filterable interface.',
+      hero: 'images/gro-trending/page-02.jpg',
+    },
+    'quickstrike': {
+      title: 'QuickStrike',
+      category: 'App / UX',
+      overview: 'QuickStrike is a rapid campaign creation tool that allows internal analysts to view and find insights with minimal friction. The UX reduces a multi-step process into a guided, single-screen flow — cutting campaign setup time and reducing dependency on engineering support.',
+      hero: 'images/quickstrike/page-03.jpg',
+      galleryPosition: 'left',
+      gallery: ['images/quickstrike/page-01.jpg','images/quickstrike/page-04.jpg','images/quickstrike/page-05.jpg','images/quickstrike/page-06.jpg','images/quickstrike/page-07.jpg','images/quickstrike/page-08.jpg'],
+    },
+    'third-party-dashboard': {
+      title: 'Third Party Dashboard',
+      category: 'Dashboard',
+      overview: 'A partner and vendor analytics reporting interface providing real-time visibility into third-party performance data. Enables partner relationship managers to monitor SLA compliance, integration health, and financial settlements without needing custom data pulls.',
+      hero: 'images/third-party-dashboard/page-02.jpg',
+      gallery: ['images/third-party-dashboard/page-03.jpg','images/third-party-dashboard/page-04.jpg','images/third-party-dashboard/page-05.jpg','images/third-party-dashboard/page-06.jpg'],
+    },
+    'ux-central-logo': {
+      title: 'UX Central Logo',
+      category: 'Branding',
+      overview: 'Brand identity and logo design for UX Central — a centralized UX design system and shared component library. The mark needed to feel both systematic and human, reflecting the team\'s role as both a design operations function and a creative community.',
+      fit: 'contain',
+      heroBg: '#1a1a1a',
+      hero: 'images/ux-central-logo/page-02.jpg',
+      galleryColumns: 2,
+      gallery: ['images/ux-central-logo/page-03.jpg','images/ux-central-logo/page-04.jpg'],
+    },
+    'arest-logo': {
+      title: 'aRest Logo',
+      category: 'Branding',
+      overview: 'Logo and brand identity for aRest, an internal REST API testing and documentation tool. The mark balances technical precision with approachability, reflecting the tool\'s focus on simplifying complex API workflows for developers.',
+      fit: 'contain',
+      heroBg: '#d9f0e3',
+      hero: 'images/arest/aRest-hero.png',
+    },
+    'map-logo': {
+      title: 'Marketplaces Analytics Program',
+      category: 'Branding',
+      overview: 'Visual identity for the Marketplaces Analytics Program — an internal initiative to elevate analytics capabilities across marketplace teams. The logo conveys upward momentum and data-driven decision making.',
+      fit: 'contain',
+      heroBg: '#0d0d1a',
+      hero: 'images/map-hero.png',
+    },
+    'code-audit-skill': {
+      title: 'Claude Skill: Code Audit',
+      category: 'Developer Tool',
+      overview: 'A Claude Code skill that extracts and audits design systems from any codebase. Point it at a repo — it auto-discovers every UI component, classifies them as Atom / Molecule / Organism, and generates an interactive inventory. Pick any component and get a full HTML reference page with every variant rendered, color tokens with inline swatches, interaction state documentation, and a Figma Import Cheat Sheet with auto-layout settings and variable definitions.',
+      hero: 'images/code-audit-skill/page-01.jpg',
+      gallery: ['images/code-audit-skill/page-02.jpg'],
+    },
+    'figma-audit-skill': {
+      title: 'Claude Skill: Figma Audit',
+      category: 'Developer Tool',
+      overview: 'The reverse of Code Audit — a Claude Code skill that crawls Figma component libraries via the MCP API and generates developer-facing reference pages. It discovers all component sets in a file, classifies them by atomic design tier, and extracts every design token bound to each component.',
+      hero: 'images/figma-audit-skill/page-01.jpg',
+      gallery: ['images/figma-audit-skill/page-02.jpg'],
+    },
+  };
+
+  /* ---- Tab filtering ---- */
+  const tabs = document.querySelectorAll('.portfolio-tab');
+  const cards = document.querySelectorAll('#portfolio-grid .pcard');
+
+  function activateTab(tab) {
+    const target = tab.dataset.tab;
+    tabs.forEach(t => {
+      t.classList.toggle('portfolio-tab--active', t === tab);
+      t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+    });
+    cards.forEach(card => {
+      card.style.display = card.dataset.tab === target ? '' : 'none';
+    });
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab)));
+  activateTab(document.querySelector('.portfolio-tab--active'));
+
+  /* ---- Modal ---- */
+  const overlay  = document.getElementById('modal-overlay');
+  const modal    = document.getElementById('modal');
+  const closeBtn = document.getElementById('modal-close');
+
+  function openModal(id) {
+    const project = projects[id];
+    if (!project) return;
+
+    document.getElementById('modal-title').textContent    = project.title;
+    document.getElementById('modal-category').textContent = project.category;
+    document.getElementById('modal-overview').textContent = project.overview;
+
+    const heroEl  = document.getElementById('modal-hero');
+    const heroImg = document.getElementById('modal-hero-img');
+    heroEl.classList.toggle('modal__hero--contain', project.fit === 'contain');
+    heroEl.style.backgroundColor = project.heroBg || '';
+    heroImg.classList.toggle('img-contain', project.fit === 'contain');
+    if (project.hero) {
+      heroImg.src = project.hero;
+      heroImg.removeAttribute('hidden');
+    } else {
+      heroImg.src = '';
+      heroImg.setAttribute('hidden', '');
+    }
+
+    const gallerySection = document.getElementById('modal-gallery-section');
+    const gallery = document.getElementById('modal-gallery');
+    if (project.gallery?.length) {
+      const contain = project.fit === 'contain';
+      const imgLeft = project.galleryPosition === 'left';
+      const cols = project.galleryColumns || 1;
+      gallery.style.gridTemplateColumns = cols === 1 ? '1fr' : `repeat(${cols}, 1fr)`;
+      gallery.innerHTML = project.gallery
+        .map(src => {
+          const imgClass = [contain ? 'img-contain' : '', imgLeft ? 'img-left' : ''].filter(Boolean).join(' ');
+          const imgStyle = cols === 1 ? ' style="height:auto;max-height:600px;"' : '';
+          return `<div class="modal__gallery-img${contain ? ' modal__gallery-img--contain' : ''}"${imgStyle}><img src="${src}" alt=""${imgClass ? ` class="${imgClass}"` : ''}></div>`;
+        })
+        .join('');
+      gallerySection.hidden = false;
+    } else {
+      gallery.innerHTML = '';
+      gallerySection.hidden = true;
+    }
+
+    modal.scrollTop = 0;
+    overlay.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    overlay.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.pcard[data-id]').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card.dataset.id);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !overlay.hasAttribute('hidden')) closeModal();
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
