@@ -140,6 +140,16 @@
         <div class="pcard-grid" id="portfolio-grid">
 
           <!-- Live Demos -->
+          <a class="pcard pcard--link" data-tab="live-demos" href="https://garygisclair.github.io/costume-directory/" target="_blank" rel="noopener noreferrer">
+            <div class="pcard__media"><img src="images/tutugood/page-01-824w.jpg" alt="TuTu Good costume donation directory" style="object-position: center center;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">Live Demo</span>
+              <h3 class="pcard__title">TuTu Good</h3>
+              <p class="pcard__desc">A searchable costume donation directory based on my daughter's middle school project — designed and built with Claude Code.</p>
+              <span class="pcard__cta">View Demo &rarr;</span>
+            </div>
+          </a>
+
           <a class="pcard pcard--link" data-tab="live-demos" href="https://northstar-live.vercel.app/" target="_blank" rel="noopener noreferrer">
             <div class="pcard__media"><img src="images/northstar-Thumbnail.png" alt="NorthStar Live Dashboard" style="object-position: left top;"></div>
             <div class="pcard__body">
@@ -231,6 +241,16 @@
           </a>
 
           <!-- UI / UX -->
+          <article class="pcard" data-tab="ui-ux" data-id="tutugood" role="button" tabindex="0" style="display:none;">
+            <div class="pcard__media"><img src="images/tutugood/page-01-824w.jpg" alt="TuTu Good costume donation directory" style="object-position: center center;"></div>
+            <div class="pcard__body">
+              <span class="tag pcard__category">App / UX</span>
+              <h3 class="pcard__title">TuTu Good</h3>
+              <p class="pcard__desc">A searchable costume donation directory based on my daughter's middle school project — designed and built with Claude Code.</p>
+              <button class="pcard__cta" tabindex="-1" aria-hidden="true">View Project &rarr;</button>
+            </div>
+          </article>
+
           <article class="pcard" data-tab="ui-ux" data-id="code-audit-skill" role="button" tabindex="0" style="display:none;">
             <div class="pcard__media"><img src="images/code-audit-skill/page-01-824w.jpg" alt="Code Audit Skill" style="object-position: left top;"></div>
             <div class="pcard__body">
@@ -583,6 +603,13 @@
 <script>
   /* ---- Project data ---- */
   const projects = {
+    'tutugood': {
+      title: 'TuTu Good',
+      category: 'App / UX',
+      overview: 'A national costume donation directory that connects donors with programs distributing free costumes to kids. Based on my daughter\'s middle school project and designed and built entirely with Claude Code. Features a homepage with ZIP code search and category cards, plus a split-panel directory view with an interactive Leaflet map, radius filtering, and category pills. CSV-powered with 19 verified listings across 6 states. Deployed to GitHub Pages.',
+      hero: 'images/tutugood/page-01.jpg',
+      gallery: ['images/tutugood/page-02.jpg'],
+    },
     'northstar': {
       title: 'NorthStar Analytics Dashboard',
       category: 'Dashboard',
