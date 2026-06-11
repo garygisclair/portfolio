@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Couple of Habits — Use Case | Gary Gisclair</title>
+  <meta name="description" content="End-to-end product design use case: A Couple of Habits, a habit-tracking app for couples — sitemap, wireframes, high-fidelity design, shipped App Store product, marketing site, and motion ad campaign.">
+  <link rel="canonical" href="https://www.garygisclair.com/use-cases/a-couple-of-habits.html">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Scoped layout for the use-case article. Composes existing tokens only. */
+    .uc-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + var(--space-6)) var(--pad-x) var(--space-8);
+    }
+    .uc-back {
+      display: inline-block;
+      font-size: var(--text-small);
+      color: var(--color-text-dim);
+      margin-bottom: var(--space-4);
+    }
+    .uc-back:hover { color: var(--color-accent); }
+    .uc-intro {
+      max-width: 760px;
+      margin-bottom: var(--space-8);
+    }
+    .uc-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, var(--text-h2));
+      line-height: 1.1;
+      margin: var(--space-2) 0 var(--space-3);
+    }
+    .uc-lede {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .uc-role {
+      font-size: var(--text-small);
+      color: var(--color-text-dim);
+      border-left: 2px solid var(--color-accent);
+      padding-left: var(--space-2);
+    }
+    .uc-section { margin-bottom: var(--space-8); }
+    .uc-section__head {
+      max-width: 760px;
+      margin-bottom: var(--space-4);
+    }
+    .uc-section__num {
+      font-family: var(--font-heading);
+      font-size: var(--text-small);
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+    }
+    .uc-section__title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      margin: var(--space-1) 0 var(--space-2);
+    }
+    .uc-section__text {
+      color: var(--color-text-muted);
+    }
+    .uc-figure {
+      background: var(--color-card-inner);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--color-shadow);
+    }
+    .uc-figure img { width: 100%; }
+    .uc-figure--scroll {
+      max-height: 720px;
+      overflow-y: auto;
+    }
+    .uc-phone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-3);
+    }
+    .uc-phone {
+      background: var(--color-card-inner);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--color-shadow);
+    }
+    .uc-phone img { width: 100%; }
+    .uc-phone figcaption {
+      font-size: var(--text-caption);
+      color: var(--color-text-dim);
+      padding: var(--space-1) var(--space-2);
+      border-top: 1px solid var(--color-card-border);
+    }
+    .uc-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-3);
+    }
+    .uc-video {
+      background: var(--color-card-inner);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--color-shadow);
+    }
+    .uc-video video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+    }
+    .uc-video figcaption {
+      font-size: var(--text-caption);
+      color: var(--color-text-dim);
+      padding: var(--space-1) var(--space-2);
+      border-top: 1px solid var(--color-card-border);
+    }
+    .uc-closing {
+      max-width: 760px;
+      border-top: 1px solid var(--color-card-border);
+      padding-top: var(--space-4);
+      color: var(--color-text-muted);
+    }
+    @media (max-width: 640px) {
+      .uc-main { padding-left: var(--space-3); padding-right: var(--space-3); }
+      .uc-figure--scroll { max-height: 480px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="../index.html#portfolio" class="nav__link nav__link--active">Portfolio</a>
+        <a href="../index.html#experience" class="nav__link">Experience</a>
+      </div>
+      <div class="nav__actions">
+        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--nav">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="uc-main">
+    <a href="../index.html#portfolio" class="uc-back">&larr; Back to Portfolio</a>
+
+    <header class="uc-intro">
+      <span class="tag">Use Case</span>
+      <h1 class="uc-title">A Couple of Habits</h1>
+      <p class="uc-lede">
+        A habit tracker built for two people — shared habits, weekly
+        check-ins, partner approvals, and end-to-end encrypted notes.
+        Live on the App Store today, with Android landing June 2026.
+      </p>
+      <p class="uc-role">
+        <strong>My role:</strong> Product designer on a three-person team
+        (product owner, developer, designer). I owned the design
+        end-to-end: information architecture, wireframes, the
+        high-fidelity design system, marketing site design, and the ad
+        campaign creative.
+      </p>
+    </header>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">01</span>
+        <h2 class="uc-section__title">Architecture</h2>
+        <p class="uc-section__text">
+          Before any screens, the product was mapped as a single sitemap:
+          49 routes across auth, onboarding, four main tabs, and the
+          partner-pairing flows that make a two-person app tricky —
+          color-coded by flow, with deferred and removed scope tracked
+          right on the artifact. The map is kept honest against the
+          shipped codebase, so design and engineering share one picture
+          of the product.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/a-couple-of-habits/sitemap.png" alt="A Couple of Habits app sitemap — 49 routes color-coded by flow" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">02</span>
+        <h2 class="uc-section__title">Wireframes</h2>
+        <p class="uc-section__text">
+          Forty-plus grayscale wireframes established layout, hierarchy,
+          and flow gating before any visual design. Working lo-fi kept
+          review cycles with the product owner fast — whole sections were
+          rearranged in dated update passes without a pixel of styling at
+          stake.
+        </p>
+      </div>
+      <figure class="uc-figure uc-figure--scroll">
+        <img src="../images/a-couple-of-habits/wireframes.jpg" alt="Wireframe wall — 40+ grayscale screens across dated update passes" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">03</span>
+        <h2 class="uc-section__title">High-fidelity design</h2>
+        <p class="uc-section__text">
+          The wireframes were cloned and restyled into a 55-screen
+          high-fidelity set in the app's "Editorial Mix" language: warm
+          cream surfaces, lavender and pink accents, Outfit for the
+          interface with Fraunces for editorial moments, and a custom
+          illustration style shared across the app and marketing.
+        </p>
+      </div>
+      <figure class="uc-figure uc-figure--scroll">
+        <img src="../images/a-couple-of-habits/hifi-screens.jpg" alt="High-fidelity screen wall in the Editorial Mix design language" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">04</span>
+        <h2 class="uc-section__title">The shipped app</h2>
+        <p class="uc-section__text">
+          Five surfaces from the live product, captured from a seeded
+          two-partner demo.
+        </p>
+      </div>
+      <div class="uc-phone-grid">
+        <figure class="uc-phone">
+          <img src="../images/a-couple-of-habits/app-01-today.jpg" alt="Today screen — pending approvals, daily focus, habit list" loading="lazy">
+          <figcaption>Today — approvals, focus, and "Seven done today, Five to go"</figcaption>
+        </figure>
+        <figure class="uc-phone">
+          <img src="../images/a-couple-of-habits/app-02-habit-detail.jpg" alt="Habit detail — streak card, feeling tags, completion grid" loading="lazy">
+          <figcaption>Habit detail — streak hero and 7-week completion grid</figcaption>
+        </figure>
+        <figure class="uc-phone">
+          <img src="../images/a-couple-of-habits/app-03-us-tab.jpg" alt="Us tab — shared relationship view with both partners" loading="lazy">
+          <figcaption>Us — the relationship view both partners share</figcaption>
+        </figure>
+        <figure class="uc-phone">
+          <img src="../images/a-couple-of-habits/app-04-insights.jpg" alt="Insights tab — pattern detection over the couple's data" loading="lazy">
+          <figcaption>Insights — "Ritual slipped" and "Intent gap" detection</figcaption>
+        </figure>
+        <figure class="uc-phone">
+          <img src="../images/a-couple-of-habits/app-05-sparks.jpg" alt="Sparks feed — encouragements received from a partner" loading="lazy">
+          <figcaption>Sparks — the encouragement feed</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">05</span>
+        <h2 class="uc-section__title">Marketing site</h2>
+        <p class="uc-section__text">
+          The live site at
+          <a href="https://acoupleofhabits.com" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent);">acoupleofhabits.com</a>
+          carries the same editorial language as the app — Fraunces
+          headlines, cream-and-pink palette, and fanned device
+          screenshots composed in Figma. Designed and shipped as part of
+          the same system, not a separate brand.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/a-couple-of-habits/marketing-hero.jpg" alt="acoupleofhabits.com hero — editorial headline with fanned device screenshots" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">06</span>
+        <h2 class="uc-section__title">Ad campaign</h2>
+        <p class="uc-section__text">
+          Seven ad formats built as data-driven Remotion (React)
+          components, so each format renders against any message hook —
+          a 40-video matrix across 5 hooks in story and feed aspect
+          ratios. Four formats shown here.
+        </p>
+      </div>
+      <div class="uc-video-grid">
+        <figure class="uc-video">
+          <video src="../images/a-couple-of-habits/ad-negative-hook.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Negative Hook</figcaption>
+        </figure>
+        <figure class="uc-video">
+          <video src="../images/a-couple-of-habits/ad-review-spotlight.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Review Spotlight</figcaption>
+        </figure>
+        <figure class="uc-video">
+          <video src="../images/a-couple-of-habits/ad-split-screen.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Split Screen</figcaption>
+        </figure>
+        <figure class="uc-video">
+          <video src="../images/a-couple-of-habits/ad-feature-callout.mp4" muted loop playsinline autoplay preload="metadata"></video>
+          <figcaption>Feature Callout</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <p class="uc-closing">
+      From the first sitemap to App Store launch, one design system
+      carried the product, the marketing site, and the ad campaign —
+      built by a three-person team.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="../index.html" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--text">
+        LinkedIn
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Respect reduced motion: stop ad loops, hand control to the user.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduceMotion.matches) {
+      document.querySelectorAll('.uc-video video').forEach(v => {
+        v.removeAttribute('autoplay');
+        v.pause();
+        v.controls = true;
+      });
+    }
+  </script>
+
+</body>
+</html>
