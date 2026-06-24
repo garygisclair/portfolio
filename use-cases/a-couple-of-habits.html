@@ -19,12 +19,15 @@
       padding: calc(var(--nav-h) + var(--space-6)) var(--pad-x) var(--space-8);
     }
     .uc-back {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: var(--text-small);
       color: var(--color-text-dim);
       margin-bottom: var(--space-4);
     }
     .uc-back:hover { color: var(--color-accent); }
+    .uc-back svg { width: 16px; height: 16px; }
     .uc-intro {
       max-width: 760px;
       margin-bottom: var(--space-8);
@@ -154,7 +157,10 @@
   </nav>
 
   <main class="uc-main">
-    <a href="../index.html#portfolio" class="uc-back">&larr; Back to Portfolio</a>
+    <a href="../index.html#portfolio" class="uc-back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      Back to Portfolio
+    </a>
 
     <header class="uc-intro">
       <span class="tag">Use Case</span>
