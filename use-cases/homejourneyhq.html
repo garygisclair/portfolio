@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeJourneyHQ, A Design System for a Live Build | Gary Gisclair</title>
+  <meta name="description" content="A design system for HomeJourneyHQ, a home-buying and selling app: OKLCH brand tokens and a shadcn-aligned component library kept in lockstep with a live Next.js codebase, the product surfaces it produced, and the guided journey at the heart of the product.">
+  <link rel="canonical" href="https://www.garygisclair.com/use-cases/homejourneyhq.html">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Serif:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* Scoped layout for the use-case article. Composes existing tokens only. */
+    .uc-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + var(--space-6)) var(--pad-x) var(--space-8);
+    }
+    .uc-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-small);
+      color: var(--color-text-dim);
+      margin-bottom: var(--space-4);
+    }
+    .uc-back:hover { color: var(--color-accent); }
+    .uc-back svg { width: 16px; height: 16px; }
+    .uc-intro {
+      max-width: 760px;
+      margin-bottom: var(--space-8);
+    }
+    .uc-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, var(--text-h2));
+      line-height: 1.1;
+      margin: var(--space-2) 0 var(--space-3);
+    }
+    .uc-lede {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .uc-role {
+      font-size: var(--text-small);
+      color: var(--color-text-dim);
+      border-left: 2px solid var(--color-accent);
+      padding-left: var(--space-2);
+    }
+    .uc-section { margin-bottom: var(--space-8); }
+    .uc-section__head {
+      max-width: 760px;
+      margin-bottom: var(--space-4);
+    }
+    .uc-section__num {
+      font-family: var(--font-heading);
+      font-size: var(--text-small);
+      color: var(--color-accent);
+      letter-spacing: 0.08em;
+    }
+    .uc-section__title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      margin: var(--space-1) 0 var(--space-2);
+    }
+    .uc-section__text {
+      color: var(--color-text-muted);
+    }
+    .uc-figure {
+      background: var(--color-card-inner);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--color-shadow);
+    }
+    .uc-figure img { width: 100%; display: block; }
+    .uc-figure figcaption {
+      font-size: var(--text-caption);
+      color: var(--color-text-dim);
+      padding: var(--space-1) var(--space-2);
+      border-top: 1px solid var(--color-card-border);
+    }
+    .uc-figure + .uc-figure { margin-top: var(--space-3); }
+    /* Tall artifacts live in a scroll frame so they don't dominate the page. */
+    .uc-figure--scroll {
+      max-height: 820px;
+      overflow-y: auto;
+    }
+    /* Pull-quote for the takeaway */
+    .uc-quote {
+      max-width: 760px;
+      font-family: var(--font-heading);
+      font-size: clamp(20px, 2.6vw, 26px);
+      line-height: 1.35;
+      border-left: 3px solid var(--color-accent);
+      padding-left: var(--space-3);
+      margin: var(--space-4) 0;
+      color: var(--color-text);
+    }
+    .uc-closing {
+      max-width: 760px;
+      border-top: 1px solid var(--color-card-border);
+      padding-top: var(--space-4);
+      color: var(--color-text-muted);
+    }
+    .uc-livelink {
+      max-width: 760px;
+      margin-top: var(--space-3);
+      font-size: var(--text-small);
+      color: var(--color-text-dim);
+    }
+    .uc-livelink a {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    @media (max-width: 640px) {
+      .uc-main { padding-left: var(--space-3); padding-right: var(--space-3); }
+      .uc-figure--scroll { max-height: 560px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <div class="nav__links">
+        <a href="../index.html" class="nav__link">Home</a>
+        <a href="../index.html#portfolio" class="nav__link nav__link--active">Portfolio</a>
+        <a href="../index.html#experience" class="nav__link">Experience</a>
+      </div>
+      <div class="nav__actions">
+        <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--nav">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="uc-main">
+    <a href="../index.html#portfolio" class="uc-back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      Back to Portfolio
+    </a>
+
+    <header class="uc-intro">
+      <span class="tag">Use Case</span>
+      <h1 class="uc-title">HomeJourneyHQ, A Design System for a Live Build</h1>
+      <p class="uc-lede">
+        I joined a home-buying and selling product as the designer, working
+        alongside the engineer building it. Instead of handing over one-off
+        screens, I built a design system: brand foundations, a component
+        library, and interaction patterns that share one vocabulary with the
+        live Next.js codebase. Then I used it to design the product's core
+        surfaces and the journey that is its spine. The point: a design system
+        is what lets a tiny team ship a coherent product and keep it coherent as
+        it grows.
+      </p>
+      <p class="uc-role">
+        <strong>My role:</strong> Designer, partnered with a separate developer
+        who owns the build. I own the design system and the product design: the
+        token foundations, the component catalogue, the onboarding, property,
+        and workspace surfaces, and the journey experience at the heart of the
+        product. The system keeps design and engineering speaking the same
+        language as the product evolves.
+      </p>
+    </header>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">01</span>
+        <h2 class="uc-section__title">The foundations</h2>
+        <p class="uc-section__text">
+          HomeJourneyHQ has to feel calm and trustworthy, the opposite of
+          enterprise software, and that tone is set entirely in the tokens. I
+          built the palette on warm cream surfaces with a soft ink for text, a
+          terracotta primary for actions, and a forest-green family for success
+          and the realtor experience, plus amber and coral for warnings and
+          accents. The buying and selling tracks carry their own fixed blue and
+          purple that hold across every theme, so a buy task always reads blue
+          and a sell task purple. The type system pairs Schibsted Grotesk for
+          headings with Hanken Grotesk for the interface, and Geist Mono for
+          prices and rates so number columns line up. Elevation stays
+          deliberately flat: a card is a single warm hairline ring, the one
+          primary next-action surface gets a heavier green ring, and a real drop
+          shadow is the rare exception for something meant to read as lifted.
+          Every token is authored in OKLCH in a single design source and
+          compiled into the app's CSS, so the system and the codebase cannot
+          drift apart.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/color.png" alt="HomeJourneyHQ color tokens: warm cream surfaces, a terracotta primary, forest-green success and realtor colors, amber and coral states, and fixed blue and purple buy and sell track colors, each labeled with its OKLCH value" loading="lazy">
+        <figcaption>Warm surfaces, the terracotta primary and forest-green state family, the green-aliased realtor color, and the fixed buy and sell track colors, all in OKLCH.</figcaption>
+      </figure>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/type-radius.png" alt="HomeJourneyHQ type and elevation: the Schibsted Grotesk and Hanken Grotesk type scale with Geist Mono numerals, the radius steps, and the flat hairline card elevation with its one green next-action ring" loading="lazy">
+        <figcaption>The heading and interface type pairing with tabular numerals, the radius steps, and the flat hairline elevation with its single green next-action ring.</figcaption>
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">02</span>
+        <h2 class="uc-section__title">The components</h2>
+        <p class="uc-section__text">
+          On top of the tokens sits the real component set, each piece a direct
+          match to its shadcn/ui counterpart in the build. Buttons run the full
+          range from the terracotta default to the green-aliased realtor
+          variant, with a one-pixel press built in. Badges carry status and role
+          as full pills, urgency from overdue to done, and property status from
+          interested to closed. Cards use a tone-driven edge ring so a card can
+          match its own status pill instead of doubling up borders, and alerts
+          stay calm by default and recolor per tone. Inputs sit on a warm taupe
+          border with the shared forest focus ring. That is what designing in
+          the grain of engineering means: the component library is not a
+          separate artifact the developer has to translate, it is the same
+          parts, named the same way, on both sides of the handoff.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/buttons-badges.png" alt="HomeJourneyHQ buttons and badges: button variants, sizes, and states with the green-aliased realtor variant, plus status, role, track, urgency, and property-status badge pills" loading="lazy">
+        <figcaption>Buttons in every variant and size, and the badge system: status, role, track, urgency, and property status.</figcaption>
+      </figure>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/cards-alerts-inputs.png" alt="HomeJourneyHQ cards, alerts, and form inputs: tone-driven card edge rings, calm recolored alerts, and warm taupe inputs with a forest focus ring" loading="lazy">
+        <figcaption>Tone-driven card rings, calm per-tone alerts, and the form inputs with their warm border and forest focus ring.</figcaption>
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">03</span>
+        <h2 class="uc-section__title">From system to product</h2>
+        <p class="uc-section__text">
+          Tokens and components only matter if they compose into screens that
+          feel like one product. I designed the core surfaces a buyer moves
+          through. Onboarding is a calm split screen that personalizes the
+          journey from a few plain questions, set against warm photography
+          instead of a wall of form fields. A saved property opens to a full
+          detail view that pairs the listing and its photo with a real cost
+          analysis: the tax, insurance, and payment math the decision actually
+          turns on. Every surface is drawn from the same tokens and components,
+          so the product reads as one calm, considered whole rather than a set
+          of screens drawn by different hands.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/screen-onboarding.jpg" alt="HomeJourneyHQ onboarding: a split screen with a Welcome, let's personalize your journey card on the left and warm home photography on the right" loading="lazy">
+        <figcaption>Onboarding personalizes the journey from a few plain questions, set against warm photography.</figcaption>
+      </figure>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/screen-property.jpg" alt="HomeJourneyHQ property detail: a listing photo and address above tabs for overview, notes, pros and cons, and a real cost analysis" loading="lazy">
+        <figcaption>A property opens to its photo, the listing facts, and a real cost analysis under the tabs.</figcaption>
+      </figure>
+    </section>
+
+    <section class="uc-section">
+      <div class="uc-section__head">
+        <span class="uc-section__num">04</span>
+        <h2 class="uc-section__title">The journey</h2>
+        <p class="uc-section__text">
+          The product's whole reason to exist is the question what comes next,
+          so the journey is the spine everything else hangs from. The journey
+          home keeps the next few moves in front of you at all times and tracks
+          the whole transaction across its stages, from getting ready to
+          closing, so progress is visible at a glance instead of buried in a
+          database. Open any step and it expands to a focused page that splits
+          cleanly into Do, the concrete moves for this step, and Know, a
+          plain-language read on what is happening and what to watch for, with
+          messages and notes kept right alongside. It turns a stressful, opaque
+          process into a calm sequence of next steps, which is the entire
+          promise of the product.
+        </p>
+      </div>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/journey-home.jpg" alt="HomeJourneyHQ journey home: a Your next moves panel of step cards above a horizontal journey-stages tracker from Get Ready through Closing and Move In, with a team and radar rail on the right" loading="lazy">
+        <figcaption>The journey home: the next moves up top, the whole transaction tracked across its stages below.</figcaption>
+      </figure>
+      <figure class="uc-figure">
+        <img src="../images/homejourneyhq/journey-detail.jpg" alt="HomeJourneyHQ journey step detail: a step titled Schedule and attend the home inspection split into a Do column of concrete moves and a Know column explaining what is going on, with messages and notes below" loading="lazy">
+        <figcaption>A step opens to a focused page split into Do and Know, with messages and notes alongside.</figcaption>
+      </figure>
+    </section>
+
+    <blockquote class="uc-quote">
+      A design system is not a deliverable you hand off and walk away from. It
+      is the shared language that lets a one-designer, one-engineer team move
+      fast and stay coherent.
+    </blockquote>
+
+    <p class="uc-closing">
+      That is the role I played here: not a set of screens, but the system
+      underneath them. The brand foundations, the component library, and the
+      interaction patterns, kept deliberately in lockstep with the code so the
+      product can keep growing without losing its calm.
+    </p>
+
+    <p class="uc-livelink">
+      The product is live at <a href="https://homejourneyhq.com" target="_blank" rel="noopener noreferrer">homejourneyhq.com</a>.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <a href="../index.html" class="logo" aria-label="Gary Gisclair">
+        <span class="logo__first">gary</span><span class="logo__last">gisclair</span>
+      </a>
+      <a href="https://www.linkedin.com/in/gary-gisclair-3093a55/" target="_blank" rel="noopener noreferrer" class="btn btn--text">
+        LinkedIn
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
